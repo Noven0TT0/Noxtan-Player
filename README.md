@@ -18,5 +18,7 @@ You can download the latest APK from the [Releases](https://github.com/Noven0TT0
 ## Acknowledgements
 Noxtan Player is heavily based on [mpvKt](https://github.com/abdallahmehiz/mpvKt) by abdallahmehiz. Special thanks to the original author and the [mpv-android](https://github.com/mpv-android/mpv-android) team.
 
-## License
-This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
+## License & Trademarks
+This project is licensed under the Apache License 2.0.
+
+**Trademark Notice:** The names "Noxtan" and "Noxtan Player", as well as the official logos and graphics associated with this project, are trademarks of the project owner (Noven0TT0). You are free to fork, modify, and distribute the code under the terms of the Apache 2.0 license, but you **must rename** the application and use your own unique branding, icons, and logos for any public distribution.

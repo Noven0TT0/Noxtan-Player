@@ -1,13 +1,11 @@
 package com.noxtan.player.data.logic
 
 import android.os.Process
-import android.util.Log // <-- Import
 import com.noxtan.player.data.local.db.VideoDao
 import com.noxtan.player.data.local.db.VideoEntity
 import com.noxtan.player.data.source.ThumbnailGenerator
 import kotlinx.coroutines.yield
 import java.io.File
-import kotlin.system.measureTimeMillis // <-- အချိန်တိုင်းတာရန် Import
 
 class ThumbnailManager(
   private val thumbnailGenerator: ThumbnailGenerator,

@@ -87,7 +87,7 @@ fun CollapsingTopBar(
     Box(
       modifier = Modifier
         .fillMaxSize()
-        .padding(start = leftNavBarPadding, end = rightNavBarPadding) // 💡 3-Button Navigation Bar ဘယ်/ညာ ရှိပါက အလိုအလျောက် တွန်းဖယ်ပေးမည်
+        .padding(start = leftNavBarPadding, end = rightNavBarPadding)
     ) {
 
       val titleStartY = statusBarHeight + 60.dp
@@ -102,7 +102,6 @@ fun CollapsingTopBar(
       val endPadding = 16.dp
       val titleScale = lerpFloat(1f, 0.7f, collapsedFraction)
 
-      // 💡 ပြင်ဆင်ချက် (၁) : Title ကို ဘယ်တော့မှ မဖျောက်တော့ပါ (alpha ဖယ်လိုက်ပါပြီ)
       Box(
         modifier = Modifier
           .fillMaxWidth()
@@ -128,14 +127,12 @@ fun CollapsingTopBar(
         )
       }
 
-      // 💡 ပြင်ဆင်ချက် (၂) : Row အစား Box ကိုသုံးလိုက်တဲ့အတွက် Search Pill က Back Button ရဲ့ အပေါ်ကနေ အုပ်ပြီး (Overlay) ပြန့်ထွက်သွားပါမယ်။ Layout ရွေ့တာ လုံးဝမရှိတော့ပါ။
       Box(
         modifier = Modifier
           .fillMaxWidth()
           .padding(top = statusBarHeight)
           .height(toolbarHeight)
       ) {
-        // အောက်ဆုံးအလွှာ (Layer 1): Back Button
         if (onBackClick != null) {
           Box(modifier = Modifier.width(64.dp).fillMaxHeight(), contentAlignment = Alignment.Center) {
             IconButton(
@@ -147,7 +144,6 @@ fun CollapsingTopBar(
           }
         }
 
-        // အပေါ်ဆုံးအလွှာ (Layer 2): Actions / Search Pill
         Row(
           modifier = Modifier.fillMaxSize(),
           horizontalArrangement = Arrangement.End,

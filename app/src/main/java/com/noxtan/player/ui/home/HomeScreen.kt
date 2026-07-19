@@ -80,6 +80,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -355,7 +356,7 @@ object HomeScreen : Screen {
               ) {
                 Icon(
                   painter = androidx.compose.ui.res.painterResource(id = R.drawable.ic_noxtan_logo),
-                  contentDescription = "NoxtanPlayer Logo",
+                  contentDescription = stringResource(R.string.a11y_app_logo),
                   modifier = Modifier.fillMaxSize(),
                   tint = androidx.compose.ui.graphics.Color.Unspecified
                 )
@@ -399,12 +400,16 @@ object HomeScreen : Screen {
               verticalAlignment = Alignment.CenterVertically,
               modifier = Modifier
                 .clip(RoundedCornerShape(8.dp))
-                .clickable {
+                .clickable(
+                  role = androidx.compose.ui.semantics.Role.Button,
+                  onClickLabel = stringResource(R.string.open_source)
+                ) {
                   context.startActivity(
                     Intent(Intent.ACTION_VIEW, android.net.Uri.parse(context.getString(R.string.github_repo_url)))
                   )
                 }
                 .padding(8.dp)
+                .semantics(mergeDescendants = true) {}
             ) {
               Icon(
                 imageVector = androidx.compose.material.icons.Icons.Rounded.Code,
@@ -414,7 +419,7 @@ object HomeScreen : Screen {
               )
               Spacer(modifier = Modifier.width(8.dp))
               Text(
-                text = stringResource(R.string.proudly_open_source),
+                text = stringResource(R.string.open_source),
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold

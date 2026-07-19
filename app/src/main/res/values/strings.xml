@@ -269,7 +269,7 @@
     <string name="value_percentage_float" translatable="false">%.2f%%</string>
 
     <string name="github_repo_url" translatable="false">https://github.com/Noven0TT0/Noxtan-Player</string>
-    <string name="privacy_policy_url">https://sites.google.com/view/noxtan-player-privacy-policy/home</string>
+    <string name="privacy_policy_url">https://noven0tt0.github.io/Noxtan-Player/privacy_policy.html</string>
     <string name="swap_the_volume_and_brightness_slider">Reverse left/right swipe zones for Volume &amp; Brightness</string>
     <string name="pref_player_display_reduce_player_animation">Disable UI transition animations</string>
     <string name="pref_player_display_hide_player_control_time">UI auto-hide delay</string>
@@ -336,9 +336,10 @@
     <string name="welcome_to_noxtan">Welcome to Noxtan</string>
     <string name="permission_description">To provide a seamless playback experience, NoxtanPlayer needs access to your device\'s storage to automatically scan, organize, and play your local videos.</string>
     <string name="grant_storage_access">Grant Storage Access</string>
-    <string name="proudly_open_source">Proudly Open Source</string>
+    <string name="open_source">Open Source</string>
     <string name="toast_first_video">This is the first video</string>
     <string name="toast_last_video">This is the last video. Cannot skip to next.</string>
+    <string name="a11y_app_logo">Noxtan Player Logo</string>
 
     <!-- Accessibility (Talkback) Strings -->
     <string name="a11y_back_close">Back or Close</string>

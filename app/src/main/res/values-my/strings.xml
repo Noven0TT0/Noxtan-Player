@@ -269,7 +269,7 @@
     <string name="value_percentage_float" translatable="false">%.2f%%</string>
 
     <string name="github_repo_url" translatable="false">https://github.com/Noven0TT0/Noxtan-Player</string>
-    <string name="privacy_policy_url" translatable="false">https://sites.google.com/view/noxtan-player-privacy-policy/home</string>
+    <string name="privacy_policy_url" translatable="false">https://noven0tt0.github.io/Noxtan-Player/privacy_policy.html</string>
     <string name="swap_the_volume_and_brightness_slider">အသံနှင့် အလင်းအတွက် ဘယ်/ညာ ပွတ်ဆွဲသည့်နေရာများကို ပြောင်းပြန်လုပ်မည်</string>
     <string name="pref_player_display_reduce_player_animation">Player အထွက် UI အန်နီမေးရှင်း ပိတ်မည်</string>
     <string name="pref_player_display_hide_player_control_time">Player UI အလိုအလျောက် ပျောက်ကွယ်မည့် ကြာချိန်</string>
@@ -336,9 +336,10 @@
     <string name="welcome_to_noxtan">Noxtan မှ ကြိုဆိုပါတယ်</string>
     <string name="permission_description">NoxtanPlayer တွင် သင့်စက်တွင်းရှိ ဗီဒီယိုများကို အလိုအလျောက် ရှာဖွေ၊ စီစဉ်ပြီး ဖွင့်ပေးနိုင်ရန်အတွက် Storage အသုံးပြုခွင့် လိုအပ်ပါသည်။</string>
     <string name="grant_storage_access">Storage အသုံးပြုခွင့် ပေးမည်</string>
-    <string name="proudly_open_source">ဂုဏ်ယူစွာဖြင့် Open Source အဖြစ် ဖန်တီးထားပါသည်</string>
+    <string name="open_source">Open Source အဖြစ် ဖန်တီးထားပါသည်</string>
     <string name="toast_first_video">ပထမဆုံး ဗီဒီယို ဖြစ်နေပါပြီ</string>
     <string name="toast_last_video">နောက်ဆုံး ဗီဒီယို ဖြစ်ပါတယ်။ ဆက်ကူး၍ မရတော့ပါ။</string>
+    <string name="a11y_app_logo">Noxtan Player လိုဂိုတံဆိပ်</string>
 
     <!-- Accessibility (Talkback) Strings -->
     <string name="a11y_back_close">နောက်သို့ဆုတ်ရန် (သို့) ပိတ်ရန်</string>

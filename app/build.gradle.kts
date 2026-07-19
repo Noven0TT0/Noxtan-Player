@@ -62,7 +62,7 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17 // 💡 17 က Cloud ရဲ့ 11 ထက် ပိုကောင်းပါတယ်
+    sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
 
@@ -117,7 +117,6 @@ room {
 }
 
 dependencies {
-  // 💡 အသုံးမပြုတော့တဲ့ Library (၃) ခုကို ဖြုတ်ထားပါပြီ
   implementation(libs.androidx.activity.compose)
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.ui)

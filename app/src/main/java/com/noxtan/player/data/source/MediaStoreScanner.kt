@@ -5,7 +5,7 @@ import android.database.Cursor
 import android.os.Build
 import android.provider.MediaStore
 import com.noxtan.player.data.local.db.VideoEntity
-import com.noxtan.player.engine.NoxtanEngine // <-- Native Engine အား Import လုပ်ပါ
+import com.noxtan.player.engine.NoxtanEngine
 import java.io.File
 
 class MediaStoreScanner(

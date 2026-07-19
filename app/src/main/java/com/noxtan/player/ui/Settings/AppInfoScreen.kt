@@ -151,7 +151,7 @@ object AboutScreen : Screen {
               context.startActivity(
                 Intent(
                   Intent.ACTION_VIEW,
-                  "https://github.com/abdallahmehiz/NoxtanPlayer".toUri()
+                  "https://github.com/abdallahmehiz/mpvKt".toUri()
                 )
               )
             }
@@ -183,7 +183,7 @@ object AboutScreen : Screen {
               context.startActivity(
                 Intent(
                   Intent.ACTION_VIEW,
-                  "https://sites.google.com/view/noxtan-player-privacy-policy/home".toUri()
+                  "https://noven0tt0.github.io/Noxtan-Player/privacy_policy.html".toUri()
                 )
               )
             }

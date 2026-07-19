@@ -32,7 +32,7 @@ class PlaybackSyncManager(
     secondarySubDelay: Int,
     aid: Int,
     audioDelay: Int,
-    customSubUri: String // <--- အသစ်ထပ်တိုး
+    customSubUri: String
   ) = withContext(Dispatchers.IO) {
     if (mediaTitle.isBlank()) return@withContext
 
@@ -58,7 +58,7 @@ class PlaybackSyncManager(
         secondarySubDelay = secondarySubDelay,
         aid = aid,
         audioDelay = audioDelay,
-        customSubUri = customSubUri // <--- အသစ်ထပ်တိုး
+        customSubUri = customSubUri
       )
     )
 

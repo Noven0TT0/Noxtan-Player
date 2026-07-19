@@ -63,12 +63,12 @@ fun PlaybackSpeedSheet(
     Surface(
       modifier = Modifier.fillMaxWidth(),
       color = Color.Black,
-      shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp) // DNA: 12.dp corners [3]
+      shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)
     ) {
       Column(
         modifier = modifier
           .fillMaxWidth()
-          .padding(horizontal = 16.dp, vertical = 12.dp) // DNA: Padding [3]
+          .padding(horizontal = 16.dp, vertical = 12.dp)
       ) {
         Row(
           verticalAlignment = Alignment.CenterVertically,
