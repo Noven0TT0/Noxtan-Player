@@ -1,0 +1,14 @@
+prefix=/home/noven/AndroidStudioProjects/NoxtanPlayer-main/app/src/main/jniLibs/arm64-v8a
+exec_prefix=${prefix}
+libdir=/home/noven/AndroidStudioProjects/NoxtanPlayer-main/app/src/main/jniLibs/arm64-v8a/lib
+includedir=/home/noven/AndroidStudioProjects/NoxtanPlayer-main/app/src/main/jniLibs/arm64-v8a/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 60.8.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil -lm -latomic -landroid -lmediandk -pthread
+Libs.private: 
+Cflags: -I${includedir}

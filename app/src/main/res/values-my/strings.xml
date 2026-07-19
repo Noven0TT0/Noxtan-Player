@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">NoxtanPlayer</string>
+
+    <string name="generic_reset">မူလအတိုင်း ပြန်ထားရန်</string>
+    <string name="generic_share">မျှဝေရန်</string>
+    <string name="generic_confirm">အတည်ပြုမည်</string>
+    <string name="generic_cancel">ပယ်ဖျက်မည်</string>
+    <string name="generic_ok">အိုကေ</string>
+    <string name="generic_unit_ms">ms</string>
+    <string name="generic_disabled">ပိတ်ထားသည်</string>
+
+    <string name="home_pick_file">ဖိုင်များ ရှာဖွေရန်</string>
+    <string name="home_open_file_picker">ဖုန်း Storage ဖွင့်ရန်</string>
+    <string name="home_open_url">URL မှတဆင့် ကြည့်ရန်</string>
+    <string name="home_url_input_label">ကွန်ရက် Stream URL</string>
+    <string name="home_invalid_protocol">အထောက်အပံ့မပေးသော ကွန်ရက် Protocol ဖြစ်နေပါသည်</string>
+
+    <string name="pref_preferences">ဆက်တင်များ</string>
+
+    <string name="pref_appearance_title">အသွင်အပြင်နှင့် UI</string>
+    <string name="pref_appearance_summary">အက်ပ်ကာလာနှင့် အမှောင်မုဒ် ပြင်ဆင်ရန်</string>
+    <string name="pref_appearance_category_theme">အမြင်ပိုင်းဆိုင်ရာ အသွင်အပြင်</string>
+    <string name="pref_appearance_darkmode_system">ဖုန်းဆက်တင်အတိုင်း</string>
+    <string name="pref_appearance_darkmode_light">အလင်းမုဒ်</string>
+    <string name="pref_appearance_darkmode_dark">အမှောင်မုဒ်</string>
+    <string name="pref_appearance_material_you_title">Dynamic Colors</string>
+    <string name="pref_appearance_material_you_summary">ဖုန်း၏ System Color Palette အတိုင်း အသုံးပြုမည်</string>
+    <string name="pref_appearance_material_you_summary_disabled">Android 12 နှင့်အထက် လိုအပ်ပါသည်။</string>
+
+    <string name="pref_player">Player ထိန်းချုပ်မှုများ</string>
+    <string name="pref_player_summary">မျက်နှာပြင်လှည့်ခြင်း၊ UI အလုပ်လုပ်ပုံနှင့် ဖွင့်ခြင်းဆိုင်ရာ စည်းမျဉ်းများ</string>
+    <string name="pref_player_orientation">မျက်နှာပြင် အနေအထား</string>
+    <string name="pref_player_orientation_free">အလိုအလျောက် လှည့်မည် (လွတ်လပ်စွာ)</string>
+    <string name="pref_player_orientation_video">ဗီဒီယို အချိုးအစားအတိုင်း ထားမည်</string>
+    <string name="pref_player_orientation_portrait">ထောင်လိုက် အသေထားမည်</string>
+    <string name="pref_player_orientation_reverse_portrait">ပြောင်းပြန် ထောင်လိုက်</string>
+    <string name="pref_player_orientation_sensor_portrait">ဆင်ဆာအလိုက် ထောင်လိုက်</string>
+    <string name="pref_player_orientation_landscape">အလျားလိုက် အသေထားမည်</string>
+    <string name="pref_player_orientation_reverse_landscape">ပြောင်းပြန် အလျားလိုက်</string>
+    <string name="pref_player_orientation_sensor_landscape">ဆင်ဆာအလိုက် အလျားလိုက်</string>
+    <string name="pref_player_draw_over_cutout">မျက်နှာပြင်အပြည့် (Notch အထိ) ချဲ့မည်</string>
+    <string name="pref_player_save_position_on_quit">နောက်ဆုံးကြည့်ခဲ့သည့် နေရာမှ ဆက်ဖွင့်မည်</string>
+    <string name="pref_player_double_tap_to_pause">နှစ်ချက်နှိပ်၍ ရပ်/ဖွင့် လုပ်မည်</string>
+    <string name="pref_player_double_tap_to_seek">နှစ်ချက်နှိပ်၍ ရှေ့ကျော်/နောက်ဆုတ် လုပ်မည်</string>
+    <string name="pref_player_double_tap_seek_duration">နှစ်ချက်နှိပ်လျှင် ကျော်မည့် အချိန်ပမာဏ</string>
+    <string name="pref_player_show_seekbar_when_seeking">အချိန်ရွှေ့နေစဉ် Timeline bar ကို ပြမည်</string>
+    <string name="pref_player_seeking_title">ထိန်းချုပ်ခြင်းနှင့် အချိန်ရွှေ့ခြင်း</string>
+    <string name="pref_player_precise_seeking_title">တိကျသော ဖရိန်အရွှေ့</string>
+    <string name="pref_player_precise_seeking_summary">Keyframe အစား အတိအကျ ဖရိန်သို့ ရွှေ့မည် (အနည်းငယ် နှေးနိုင်သည်)</string>
+    <string name="pref_player_automatically_enter_pip">Picture-in-Picture မုဒ်သို့ အလိုအလျောက် ဝင်မည်</string>
+    <string name="pref_player_close_after_eof">ဗီဒီယိုပြီးဆုံးပါက ပလေယာမှ ထွက်မည်</string>
+    <string name="pref_player_remember_brightness">မိမိစိတ်ကြိုက် အလင်းအမှောင်ကို မှတ်ထားမည်</string>
+
+    <string name="pref_player_gestures">အထိအတွေ့ ထိန်းချုပ်မှုများ</string>
+    <string name="pref_player_gestures_seek">ဘေးတိုက်ပွတ်ဆွဲ၍ အချိန်ရွှေ့မည်</string>
+    <string name="side_left">ဘယ်ဘက်</string>
+    <string name="side_right">ညာဘက်</string>
+    <string name="pref_player_gestures_brightness">မျက်နှာပြင် %s အထက်အောက် ပွတ်ဆွဲ၍ အလင်းအမှောင်</string>
+    <string name="pref_player_gestures_volume">မျက်နှာပြင် %s အထက်အောက် ပွတ်ဆွဲ၍ အသံအတိုးအကျယ်</string>
+    <string name="pref_player_gestures_hold_for_double_speed">မျက်နှာပြင် ဖိထားပါက 2x ဖြင့် ဖွင့်မည်</string>
+    <string name="pref_player_gestures_hold_for_multiple_speed">မျက်နှာပြင် ဖိထားပါက စိတ်ကြိုက်အမြန်နှုန်း</string>
+
+    <string name="pref_player_controls">ပလေယာ အသွင်အပြင်</string>
+    <string name="pref_player_controls_display_volume_as_percentage">အသံပမာဏကို ရာခိုင်နှုန်းဖြင့် ပြမည်</string>
+    <string name="pref_player_controls_show_loading_circle">Buffering လုပ်နေကြောင်း ပြမည်</string>
+    <string name="pref_player_controls_show_chapter_indicator">Timeline ပေါ်တွင် အခန်း(Chapter) အမှတ်အသားများ ပြမည်</string>
+    <string name="pref_player_controls_show_chapters_button">အခန်း(Chapter) ရွေးချယ်သည့် မီနူးကို ဖွင့်မည်</string>
+    <string name="pref_player_controls_show_chapters_summary">ဗီဒီယိုဖိုင်တွင် အခန်းများ ပါဝင်မှသာ မြင်ရမည်</string>
+    <string name="pref_player_display_show_status_bar">ဖုန်း notification Status Bar ကို အမြဲပြထားမည်</string>
+
+    <string name="pref_player_display">မျက်နှာပြင်ပေါ်ရှိ အရာများ</string>
+    <string name="pref_player_display_panel_opacity">ဆက်တင်ဘုတ် အကြည်အနောက်</string>
+    <string name="pref_player_display_panel_transparency_summary">%d%% အပိတ်</string>
+
+    <string name="pref_gesture">အထိအတွေ့နှင့် ပွတ်ဆွဲမှုများ</string>
+    <string name="pref_gesture_summary">အနှိပ်နှင့် ပွတ်ဆွဲမှု အလုပ်လုပ်ပုံများ ပြင်ဆင်ရန်</string>
+    <string name="pref_gesture_double_tap_title">မျက်နှာပြင်ကို နှစ်ချက်နှိပ်ခြင်း</string>
+    <string name="pref_gesture_double_tap_none">ဘာမှမလုပ်ပါ</string>
+    <string name="pref_gesture_double_tap_seek">ရှေ့/နောက် ကျော်မည်</string>
+    <string name="pref_gesture_double_tap_play">ဖွင့်/ရပ် လုပ်မည်</string>
+    <string name="pref_gesture_double_tap_custom">စိတ်ကြိုက် Lua Command</string>
+    <string name="pref_gesture_double_tap_left_title">ဘယ်ဘက်ကို နှစ်ချက်နှိပ်ခြင်း</string>
+    <string name="pref_gesture_double_tap_center_title">အလယ်ကို နှစ်ချက်နှိပ်ခြင်း</string>
+    <string name="pref_gesture_double_tap_right_title">ညာဘက်ကို နှစ်ချက်နှိပ်ခြင်း</string>
+    <string name="pref_gesture_double_tap_custom_info">\"စိတ်ကြိုက်\" အတွက် input.conf တွင် 0x10001 (ဘယ်)၊ 0x10002 (အလယ်)၊ 0x10003 (ညာ) တို့ဖြင့် သတ်မှတ်ပါ။</string>
+
+    <string name="pref_gesture_media_title">ခလုတ်များ (Media Keys)</string>
+    <string name="pref_gesture_media_previous">ယခင်ဖိုင်သို့ သွားသည့်ခလုတ်</string>
+    <string name="pref_gesture_media_play">ဖွင့်/ရပ် ခလုတ်</string>
+    <string name="pref_gesture_media_next">နောက်ဖိုင်သို့ သွားသည့်ခလုတ်</string>
+    <string name="pref_gesture_media_custom_info">\"စိတ်ကြိုက်\" ခလုတ်များအတွက် input.conf တွင် 0x10004 (ယခင်)၊ 0x10005 (ဖွင့်/ရပ်)၊ 0x10006 (နောက်) တို့ဖြင့် သတ်မှတ်ပါ။</string>
+
+    <string name="pref_decoder">ဗီဒီယို အင်ဂျင်</string>
+    <string name="pref_decoder_summary">Hardware Acceleration၊ Rendering၊ Pixel ဖောမတ်များ</string>
+    <string name="pref_decoder_try_hw_dec_title">Hardware Acceleration ကို အသုံးပြုမည်</string>
+    <string name="pref_decoder_gpu_next_title">GPU-Next ဗီဒီယို ရင်ဒါ (Renderer) ကို ဖွင့်မည်</string>
+    <string name="pref_decoder_gpu_next_summary">မျိုးဆက်သစ် Vulkan/OpenGL ရင်ဒါ အင်ဂျင်</string>
+    <string name="pref_decoder_debanding_title">ကာလာ Debanding ဖစ်တာ (Filter)</string>
+    <string name="pref_decoder_yuv420p_title">YUV420P Chroma Subsampling ကို အတင်းသုံးမည်</string>
+    <string name="pref_decoder_yuv420p_summary">တချို့ဖုန်းများတွင် မျက်နှာပြင်မည်းနေခြင်းကို ဖြေရှင်းပေးသည်။ အမြန်နှုန်းပိုကောင်းသော်လည်း ကာလာအရည်အသွေး အနည်းငယ် ကျဆင်းနိုင်သည်။</string>
+
+    <string name="pref_subtitles">စာတန်းထိုးနှင့် စာသား</string>
+    <string name="pref_subtitles_summary">ဘာသာစကား ဦးစားပေးမှု၊ စာသားအပြင်အဆင်၊ အလိုအလျောက်ထည့်သွင်းခြင်း</string>
+    <string name="pref_preferred_languages">ဦးစားပေး ဘာသာစကား</string>
+    <string name="pref_subtitles_fonts_dir">စိတ်ကြိုက် ဖောင့်(Font) ဖိုင်တွဲ</string>
+    <string name="pref_subtitles_preferred_language">ကော်မာခံ၍ ဘာသာစကားကုဒ်များကို ထည့်ပါ (ဥပမာ- eng, my, mm)။</string>
+    <string name="pref_subtitles_autoload_title">ဖုန်းထဲမှ စာတန်းထိုးများကို အလိုအလျောက် ရှာမည်</string>
+    <string name="pref_subtitles_autoload_summary">တူညီသော ဖိုင်တွဲထဲမှ ဗီဒီယိုအမည်နှင့်တူသော စာတန်းထိုးများကို အလိုအလျောက် ထည့်သွင်းပေးမည်။</string>
+
+    <string name="pref_audio">အသံ</string>
+    <string name="pref_audio_summary">အသံဖိုင်များ၊ အသံလမ်းကြောင်းများ၊ အသံချဲ့ခြင်း</string>
+    <string name="pref_audio_pitch_correction_title">မူလအသံတက်ကျကို ထိန်းထားမည်</string>
+    <string name="pref_audio_pitch_correction_summary">အမြန်နှုန်း ပြောင်းသည့်တိုင် အသံသဘာဝမပျက်အောင် ထိန်းထားပေးသည်</string>
+    <string name="pref_audio_channels">အသံလမ်းကြောင်းများ (Audio Channels)</string>
+    <string name="pref_audio_channels_auto">အလိုအလျောက်</string>
+    <string name="pref_audio_channels_auto_safe">အလိုအလျောက် (Safe Mode)</string>
+    <string name="pref_audio_channels_mono">မိုနို (လမ်းကြောင်းတစ်ခုတည်း)</string>
+    <string name="pref_audio_channels_stereo">စတီရီယို (၂.၀)</string>
+    <string name="pref_audio_channels_stereo_reversed">ဘယ်/ညာ ပြောင်းမည် (Reversed)</string>
+    <string name="pref_audio_preferred_language">ကော်မာခံ၍ အသံဘာသာစကားကုဒ်များကို ထည့်ပါ (ဥပမာ- eng, my, mm)။</string>
+    <string name="pref_audio_volume_boost_cap">အများဆုံး အသံချဲ့နိုင်မည့် ကန့်သတ်ချက်</string>
+
+    <string name="pref_advanced">စနစ်နှင့် အဆင့်မြင့်</string>
+    <string name="pref_advanced_summary">အက်ပ်ဒေတာ၊ ကွန်ဖစ်ဖိုင်များ၊ အမှားရှာဖွေခြင်း</string>
+    <string name="pref_advanced_mpv_conf_storage_location">MPV ကွန်ဖစ်ဖိုင်တွဲကို ရွေးပါ</string>
+    <string name="pref_advanced_mpv_conf">mpv.conf ကို ပြင်ဆင်ရန်</string>
+    <string name="pref_advanced_input_conf">input.conf ကို ပြင်ဆင်ရန်</string>
+    <string name="pref_advanced_dump_logs_title">စနစ်မှတ်တမ်းများ (Logs) ထုတ်ယူရန်</string>
+    <string name="pref_advanced_dump_logs_summary">ပြဿနာများကို ဖြေရှင်းနိုင်ရန် မှတ်တမ်းများ ထုတ်ယူမည်</string>
+    <string name="pref_advanced_verbose_logging_title">အသေးစိတ် မှတ်တမ်းတင်ခြင်း (Verbose) ကို ဖွင့်မည်</string>
+    <string name="pref_advanced_verbose_logging_summary">ပလေယာမှတ်တမ်း အသေးစိတ်ကို ထုတ်ပေးသည် (စွမ်းဆောင်ရည်ကို ထိခိုက်နိုင်သည်)</string>
+    <string name="pref_advanced_clear_playback_history">ဖွင့်ခဲ့သော မှတ်တမ်းများကို ဖျက်မည်</string>
+    <string name="pref_advanced_clear_playback_history_confirm_title">မှတ်တမ်းအားလုံးကို ဖျက်မည်လား?</string>
+    <string name="pref_advanced_clear_playback_history_confirm_subtitle">ဤလုပ်ဆောင်ချက်သည် မှတ်သားထားသော ဗီဒီယိုနေရာများ၊ စာတန်းထိုး ဆက်တင်များနှင့် အသံချိန်ညှိထားမှုများကို ဖျက်ပစ်မည်ဖြစ်သည်။</string>
+    <string name="pref_advanced_cleared_playback_history">မှတ်တမ်းများကို ဖျက်ပြီးပါပြီ။</string>
+    <string name="pref_advanced_clear_fonts_cache">ဖောင့် Cache များကို ဖျက်မည်</string>
+    <string name="pref_advanced_cleared_fonts_cache">ဖောင့် Cache များကို ဖျက်ပြီးပါပြီ။</string>
+    <string name="pref_advanced_clear_mpv_conf_cache">MPV ကွန်ဖစ်များကို ရှင်းလင်းမည်</string>
+    <string name="pref_advanced_cleared_mpv_conf_cache">MPV ကွန်ဖစ် Cache များကို ရှင်းလင်း ပြီးပါပြီ။</string>
+
+    <string name="pref_custom_buttons_title">စိတ်ကြိုက် လုပ်ဆောင်ချက်များ</string>
+    <string name="pref_custom_buttons_summary">UI ခလုတ်များနှင့် Lua Script များကို ချိတ်ဆက်ရန်</string>
+    <string name="pref_custom_button_action_add">ဖန်တီးမည်</string>
+    <string name="pref_custom_button_action_add_title_text">ခလုတ်အမည်</string>
+    <string name="pref_custom_button_action_add_already_exists">ဤအမည်ဖြင့် ခလုတ်ရှိနေပြီးဖြစ်သည်။</string>
+    <string name="pref_custom_button_action_add_required">*မဖြစ်မနေထည့်ရန်</string>
+    <string name="pref_custom_button_action_add_optional">(ရွေးချယ်နိုင်သည်)</string>
+    <string name="pref_custom_button_action_add_content_text">Lua Script (နှိပ်ရန်)</string>
+    <string name="pref_custom_button_action_add_long_press_text">Lua Script (ဖိထားရန်)</string>
+    <string name="pref_custom_button_add_button">စိတ်ကြိုက်ခလုတ် အသစ်</string>
+    <string name="pref_custom_button_empty">စိတ်ကြိုက်ခလုတ်များ မသတ်မှတ်ရသေးပါ။</string>
+    <string name="pref_custom_button_edit_button">ခလုတ်ကို ပြင်ဆင်မည်</string>
+    <string name="pref_custom_button_edit_button_id">(အတွင်းပိုင်း ID: %d)</string>
+    <string name="pref_custom_button_delete_button">ခလုတ်ကို ဖျက်မည်</string>
+    <string name="pref_custom_button_delete_confirmation">\"%s\" စိတ်ကြိုက်ခလုတ်ကို ဖျက်မည်လား?</string>
+
+    <string name="pref_about_title">အက်ပ်အကြောင်း</string>
+    <string name="pref_about_summary">ဗားရှင်း၊ Open-source လိုင်စင်များ</string>
+    <string name="pref_about_app_version">လက်ရှိ ဗားရှင်း</string>
+    <string name="pref_about_app_version_formatted" translatable="false">%s %s</string>
+    <string name="pref_about_oss_libraries">ပြင်ပ လိုင်စင်များ</string>
+    <string name="pref_about_privacy_policy">ကိုယ်ရေးကိုယ်တာနှင့် ဒေတာ ပေါ်လစီ</string>
+
+    <string name="player_sheets_add_ext_sub">စာတန်းထိုးဖိုင် ထည့်ရန်</string>
+    <string name="player_sheets_add_ext_audio">အသံဖိုင် ထည့်ရန်</string>
+    <string name="player_sheets_tracks_off">ပိတ်ထားမည်</string>
+    <string name="player_sheets_track_title_w_lang" translatable="false">#%d: %s (%s)</string>
+    <string name="player_sheets_track_title_wo_lang" translatable="false">#%d: %s</string>
+    <string name="player_sheets_track_lang_wo_title" translatable="false">#%d: %s</string>
+    <string name="player_sheets_chapter_title_substitute_audio">အသံလမ်းကြောင်း #%d</string>
+    <string name="player_sheets_chapter_title_substitute_subtitle">စာတန်းထိုးလမ်းကြောင်း #%d</string>
+    <string name="player_sheets_subtitles_footer_secondary_sid_no_styles">မှတ်ချက်- ဒုတိယ စာတန်းထိုးများသည် ASS/SSA ဒီဇိုင်းများကို အလုပ်လုပ်မည်မဟုတ်ပါ။</string>
+    <string name="player_sheets_subtitles_settings_title">စာတန်းထိုး ဂုဏ်သတ္တိများ</string>
+    <string name="player_sheets_subtitles_color_text">စာသားအရောင်</string>
+    <string name="player_sheets_subtitles_color_border">အနားသတ်အရောင်</string>
+    <string name="player_sheets_subtitles_color_background">နောက်ခံအရောင်</string>
+    <string name="player_sheets_subtitles_border_style">အနားသတ် ပုံစံ</string>
+
+    <string name="player_sheets_subtitles_border_style_outline_and_shadow">စာသား အနားသတ်နှင့် အရိပ်</string>
+    <string name="player_sheets_subtitles_border_style_opaque_box">အပိတ် နောက်ခံဘောက်စ်</string>
+    <string name="player_sheets_subtitles_border_style_background_box">အကြည် နောက်ခံဘောက်စ်</string>
+    <string name="player_sheets_subtitles_shadow_offset">အရိပ် အတိမ်အနက်</string>
+    <string name="player_sheets_sub_color_red">အနီရောင် (Red)</string>
+    <string name="player_sheets_sub_color_green">အစိမ်းရောင် (Green)</string>
+    <string name="player_sheets_sub_color_blue">အပြာရောင် (Blue)</string>
+    <string name="player_sheets_sub_color_alpha">အကြည်အနောက် (Alpha)</string>
+    <string name="player_sheets_sub_override_ass">ASS/SSA များပေါ်တွင် စိတ်ကြိုက်စတိုင် အတင်းသုံးမည်</string>
+    <string name="player_sheets_sub_scale">စာသားအရွယ်အစား အဆ</string>
+    <string name="player_sheets_sub_position">အထက်အောက် နေရာချထားမှု</string>
+    <string name="player_sheets_sub_typography_card_title">ဖောင့် စတိုင်များ</string>
+    <string name="player_sheets_sub_typography_font">ဖောင့်အမျိုးအစား</string>
+    <string name="player_sheets_sub_typography_font_size">မူလအရွယ်အစား</string>
+    <string name="player_sheets_sub_typography_border_size">အနားသတ် အထူ</string>
+    <string name="player_sheets_sub_colors_card_title">ကာလာများ</string>
+    <string name="player_sheets_sub_misc_card_title">အခြားဆက်တင်များ</string>
+    <string name="player_sheets_sub_delay_card_title">စာတန်းထိုး ချိန်ညှိမှု</string>
+    <string name="player_sheets_sub_delay_card_delay">အချိန် အတိုးအလျှော့ (Offset)</string>
+    <string name="player_sheets_sub_delay_card_speed">အမြန်နှုန်း ချိန်ညှိမှု</string>
+    <string name="player_sheets_sub_delay_affected_subtitle">အချိန်ပြောင်းလဲမှုကို သက်ရောက်စေရန်</string>
+    <string name="player_sheets_sub_delay_subtitle_type_primary">ပင်မ လမ်းကြောင်း</string>
+    <string name="player_sheets_sub_delay_subtitle_type_secondary">ဒုတိယ လမ်းကြောင်း</string>
+    <string name="player_sheets_sub_delay_subtitle_type_primary_and_secondary">လမ်းကြောင်းနှစ်ခုလုံး</string>
+    <string name="player_sheets_sub_delay_subtitle_voice_heard">အသံ ကြားရချိန်</string>
+    <string name="player_sheets_sub_delay_subtitle_text_seen">စာသား မြင်ရချိန်</string>
+    <string name="player_sheets_delay_set_as_default">ပုံသေအဖြစ် မှတ်သားမည်</string>
+    <string name="player_sheets_audio_delay_card_title">အသံ ချိန်ညှိမှု</string>
+    <string name="player_sheets_sub_delay_audio_sound_heard">စကားပြော ကြားရချိန်</string>
+    <string name="player_sheets_sub_delay_sound_sound_spotted">လှုပ်ရှားမှု မြင်ရချိန်</string>
+
+    <string name="player_sheets_video_settings_title">ဗီဒီယို ပြင်ဆင်မှုများ</string>
+    <string name="player_sheets_deband_title">Debanding ဖစ်တာ</string>
+    <string name="player_sheets_deband_none">ပိတ်မည်</string>
+    <string name="player_sheets_deband_cpu">ဆော့ဖ်ဝဲလ် (CPU)</string>
+    <string name="player_sheets_deband_gpu">ဟာ့ဒ်ဝဲလ် (GPU)</string>
+    <string name="player_sheets_deband_iterations">အကြိမ်အရေအတွက်</string>
+    <string name="player_sheets_deband_threshold">ပြင်းအား</string>
+    <string name="player_sheets_deband_range">အချင်းဝက်</string>
+    <string name="player_sheets_deband_grain">Noise ထည့်သွင်းခြင်း</string>
+    <string name="player_sheets_filters_title">ကာလာ ချိန်ညှိခြင်း</string>
+    <string name="player_sheets_filters_brightness">အလင်း (Brightness)</string>
+    <string name="player_sheets_filters_contrast">အလင်းအမှောင် ကွာဟမှု (Contrast)</string>
+    <string name="player_sheets_filters_gamma">ဂမ်မာ (Gamma)</string>
+    <string name="player_sheets_filters_Saturation">အရောင်ရင့်မှု (Saturation)</string>
+    <string name="player_sheets_filters_hue">အရောင်ပြောင်းလဲမှု (Hue)</string>
+    <string name="player_sheets_filters_warning">မှတ်ချက်- ဟာ့ဒ်ဝဲလ် ဒရိုက်ဘာများကြောင့် အချို့သော ကာလာဖစ်တာများ အလုပ်မလုပ်နိုင်ပါ။</string>
+
+    <string name="player_sheets_speed_slider_label">ဖွင့်မည့် အမြန်နှုန်း</string>
+    <string name="player_sheets_speed_make_default">အက်ပ်စဖွင့်ချိန် အမြန်နှုန်းအဖြစ် သတ်မှတ်မည်</string>
+
+    <string name="player_sheets_decoder_formatted" translatable="false">%1$s (%2$s)</string>
+
+    <string name="numeric_chooser_value_too_big">အများဆုံးပမာဏထက် ကျော်လွန်နေသည်</string>
+    <string name="numeric_chooser_value_too_small">အနည်းဆုံးပမာဏထက် နည်းနေသည်</string>
+
+    <string name="player_sheets_more_title">အခြား ကိရိယာများ</string>
+    <string name="player_sheets_stats_page_title">အချက်အလက်များ (Stats) ပြသရန်</string>
+    <string name="player_sheets_stats_page_chip">အမြင် %d</string>
+    <string name="player_sheets_custom_buttons_title">ဖြတ်လမ်း ခလုတ်များ</string>
+    <string name="player_seek_n_seconds">%d စက္ကန့်</string>
+    <string name="player_speed" translatable="false">%.2fx</string>
+    <string name="player_gesture_seek_indicator" translatable="false">%c%s\n[%s]</string>
+
+    <string name="player_aspect_fit">အံဝင်ခွင်ကျ (Fit)</string>
+    <string name="player_aspect_crop">ဖြတ်တောက်မည် (Crop)</string>
+    <string name="player_aspect_stretch">အပြည့်ဆွဲဆန့်မည် (Stretch)</string>
+
+    <string name="crash_screen_title">အက်ပလီကေးရှင်း အမှားအယွင်း</string>
+    <string name="crash_screen_subtitle">%s တွင် ပြဿနာတစ်ခု ရှိနေပုံရသည်။ ဤပြဿနာကို ဖြေရှင်းနိုင်ရန် အမှားအယွင်းမှတ်တမ်းများကို Developer ထံ မျှဝေပေးပါ။</string>
+    <string name="crash_screen_logs_title">အမှားအယွင်း အသေးစိတ်-</string>
+    <string name="crash_screen_share">အမှားအယွင်း မှတ်တမ်းများကို ထုတ်ယူမည်</string>
+    <string name="crash_screen_restart">အက်ပ်ကို ပြန်လည်စတင်မည်</string>
+
+    <string name="timer_picker_enter_timer">အချိန် ရိုက်ထည့်ပါ</string>
+    <string name="timer_picker_pick_time">အချိန် ရွေးချယ်ပါ</string>
+    <string name="timer_title">အလိုအလျောက် ပိတ်မည့် အချိန် (Sleep Timer)</string>
+    <string name="timer_remaining">%s ကျန်သေးသည်</string>
+
+    <string name="toast_sleep_timer_ended">Sleep timer ကြောင့် ဖွင့်နေခြင်းကို ရပ်လိုက်ပါပြီ။</string>
+
+    <string name="volume_slider_percentage_positive_boost" translatable="false">%d%% + %d</string>
+    <string name="volume_slider_percentage_negative_boost" translatable="false">%d%% - %d</string>
+    <string name="volume_slider_percentage_other" translatable="false">%d%% (%d)</string>
+    <string name="volume_slider_steps_positive_boost" translatable="false">%d + %d</string>
+    <string name="volume_slider_steps_negative_boost" translatable="false">%d - %d</string>
+    <string name="volume_slider_steps_other" translatable="false">%d (%d)</string>
+
+    <string name="value_percentage_int" translatable="false">%d%%</string>
+    <string name="value_percentage_float" translatable="false">%.2f%%</string>
+
+    <string name="github_repo_url" translatable="false">https://github.com/Noven0TT0/Noxtan-Player</string>
+    <string name="privacy_policy_url" translatable="false">https://sites.google.com/view/noxtan-player-privacy-policy/home</string>
+    <string name="swap_the_volume_and_brightness_slider">အသံနှင့် အလင်းအတွက် ဘယ်/ညာ ပွတ်ဆွဲသည့်နေရာများကို ပြောင်းပြန်လုပ်မည်</string>
+    <string name="pref_player_display_reduce_player_animation">Player အထွက် UI အန်နီမေးရှင်း ပိတ်မည်</string>
+    <string name="pref_player_display_hide_player_control_time">Player UI အလိုအလျောက် ပျောက်ကွယ်မည့် ကြာချိန်</string>
+    <string name="show_splash_ovals_on_double_tap_to_seek">နှစ်ချက်နှိပ်ချိန်တွင် လှိုင်း(Ripple) animation</string>
+    <string name="show_time_on_double_tap_to_seek">နှစ်ချက်နှိပ်ချိန်တွင် စက္ကန့် animation</string>
+    <string name="show_icon_on_double_tap_to_seek">နှစ်ချက်နှိပ်ချိန်တွင် မြားသင်္ကေတ animation</string>
+
+    <string name="pref_enable_background_playback">နောက်ခံတွင် အသံသာဖွင့်မည့် မုဒ်</string>
+    <string name="pref_enable_background_playback_summary">အက်ပ်မှထွက်သွားသော်လည်း အသံကို ဆက်လက်ဖွင့်ထားမည်</string>
+    <string name="notification_channel_name">မီဒီယာ ဝန်ဆောင်မှု</string>
+    <string name="notification_channel_description">နောက်ခံတွင် ဖွင့်ထားခြင်းကို ထိန်းချုပ်သည့် နိုတီဖီကေးရှင်းများ</string>
+    <string name="notification_playing">နောက်ခံတွင် အသံဖွင့်နေသည်</string>
+    <string name="notification_pause">ရပ်မည်</string>
+    <string name="notification_play">ဆက်ဖွင့်မည်</string>
+    <string name="notification_stop">ပိတ်မည်</string>
+    <string name="notification_forward">ရှေ့ကျော်မည်</string>
+    <string name="notification_rewind">နောက်ဆုတ်မည်</string>
+
+    <string name="about_acknowledgement">အသိအမှတ်ပြုမှုများ</string>
+    <string name="about_based_on">NoxtanPlayer ကို အခြေခံထားပါသည်</string>
+    <string name="about_based_on_desc">NoxtanPlayer သည် open-source NoxtanPlayer ပရောဂျက်ကို အခြေခံ၍ ပြုပြင်ဖန်တီးထားခြင်း ဖြစ်ပါသည်။</string>
+    <string name="about_info_legal">အချက်အလက်နှင့် ဥပဒေရေးရာ</string>
+    <string name="about_system_diagnostics">စနစ်ပိုင်းဆိုင်ရာ အချက်အလက်များ</string>
+    <string name="about_system_diagnostics_desc">ဟာ့ဒ်ဝဲလ်နှင့် မီဒီယာအင်ဂျင် အသေးစိတ်ကို ကြည့်ရန်</string>
+    <string name="about_open_source_licenses">Open Source လိုင်စင်များ</string>
+    <string name="about_open_source_licenses_desc">ပြင်ပ ဆော့ဖ်ဝဲလ်နှင့် လိုင်ဘရီများ</string>
+
+    <string name="pref_advanced_group_config">ကွန်ဖစ်ဖိုင်များ (CONFIGURATION FILES)</string>
+    <string name="pref_advanced_group_debugging">အမှားရှာဖွေခြင်းနှင့် မှတ်တမ်းများ</string>
+    <string name="pref_advanced_group_data">ဒေတာနှင့် ကက်ချ် (DATA &amp; CACHE)</string>
+
+    <string name="pref_advanced_clear_playback_history_summary">မှတ်သားထားသော ဗီဒီယိုနေရာများနှင့် ရွေးချယ်ထားမှုများကို ဖျက်ပစ်မည်</string>
+    <string name="pref_advanced_clear_mpv_conf_cache_summary">သိမ်းဆည်းထားသော MPV ကွန်ဖစ်ဖိုင်များကို ရှင်းလင်းမည်</string>
+    <string name="pref_advanced_clear_fonts_cache_summary">သိမ်းဆည်းထားသော စိတ်ကြိုက်စာတန်းထိုး ဖောင့်များကို ရှင်းလင်းမည်</string>
+
+    <string name="search_placeholder">ရှာဖွေရန်…</string>
+
+    <string name="cinematic_mode_title">Cinematic Mode</string>
+    <string name="cinematic_mode_desc">ပိုမိုကြည်လင်ပြတ်သားပြီး အရောင်အသွေးစုံလင်သော အတွေ့အကြုံကို ခံစားရန် ဖွင့်ပါ။</string>
+    <string name="cinematic_mode_enable">ဖွင့်မည်</string>
+    <string name="cinematic_mode_disable">ပိတ်မည်</string>
+
+    <string name="swipe_protector_title">ပွတ်ဆွဲမှု တားဆီးခြင်း (Swipe Protector)</string>
+    <string name="swipe_protector_desc">ဖုန်း၏ ဘေးအစွန်းမှ ပွတ်ဆွဲ၍ နောက်ဆုတ်ခြင်း (Back Gesture) ကို တားဆီးရန် ဤလုပ်ဆောင်ချက်ကို ဖွင့်ပါ။</string>
+    <string name="swipe_protector_target_edge">တားဆီးမည့် ဘေးအစွန်း</string>
+    <string name="swipe_protector_left">ဘယ်</string>
+    <string name="swipe_protector_right">ညာ</string>
+    <string name="swipe_protector_both">နှစ်ဖက်လုံး</string>
+    <string name="swipe_protector_left_pos">ဘယ်ဘက်အစွန်း နေရာ</string>
+    <string name="swipe_protector_right_pos">ညာဘက်အစွန်း နေရာ</string>
+
+    <string name="eye_care_title">မျက်စိကာကွယ်ရေးနှင့် ညသုံးမုဒ်</string>
+    <string name="eye_care_bluelight">အပြာရောင်အလင်း စစ်ထုတ်ခြင်း</string>
+    <string name="eye_care_bluelight_desc">မျက်စိညောင်းသက်သာပြီး အိပ်ပျော်စေရန် အပြာရောင်အလင်းကို လျှော့ချမည်</string>
+    <string name="eye_care_antiglare">အလင်းပြန်မှု လျှော့ချခြင်း (Anti-Glare)</string>
+    <string name="eye_care_antiglare_desc">စူးရှလွန်းသော အဖြူရောင်နေရာများကို မှိန်ချပေးမည်</string>
+    <string name="eye_care_antistrobe">အလင်းလက်ခြင်းမှ ကာကွယ်မှု</string>
+    <string name="eye_care_antistrobe_desc">ရုတ်တရက် လင်းလက်သွားသော အလင်းရောင်များကို ချောမွေ့သွားစေမည်</string>
+    <string name="eye_care_autodim">အလိုအလျောက် အလင်းမှိန်ခြင်း</string>
+    <string name="eye_care_autodim_desc">မြင်ကွင်းပေါ်မူတည်၍ အလင်းကို အလိုအလျောက် လျှော့ချပေးမည်</string>
+    <string name="eye_care_nightaudio">ညသုံး အသံမုဒ်</string>
+    <string name="eye_care_nightaudio_desc">စကားပြောသံကို ပိုကျယ်စေပြီး ပေါက်ကွဲသံများကို တိုးစေမည်</string>
+
+    <string name="welcome_to_noxtan">Noxtan မှ ကြိုဆိုပါတယ်</string>
+    <string name="permission_description">NoxtanPlayer တွင် သင့်စက်တွင်းရှိ ဗီဒီယိုများကို အလိုအလျောက် ရှာဖွေ၊ စီစဉ်ပြီး ဖွင့်ပေးနိုင်ရန်အတွက် Storage အသုံးပြုခွင့် လိုအပ်ပါသည်။</string>
+    <string name="grant_storage_access">Storage အသုံးပြုခွင့် ပေးမည်</string>
+    <string name="proudly_open_source">ဂုဏ်ယူစွာဖြင့် Open Source အဖြစ် ဖန်တီးထားပါသည်</string>
+    <string name="toast_first_video">ပထမဆုံး ဗီဒီယို ဖြစ်နေပါပြီ</string>
+    <string name="toast_last_video">နောက်ဆုံး ဗီဒီယို ဖြစ်ပါတယ်။ ဆက်ကူး၍ မရတော့ပါ။</string>
+
+    <!-- Accessibility (Talkback) Strings -->
+    <string name="a11y_back_close">နောက်သို့ဆုတ်ရန် (သို့) ပိတ်ရန်</string>
+    <string name="a11y_close_search">ရှာဖွေခြင်းကို ပိတ်မည်</string>
+    <string name="a11y_clear_search">ရှာဖွေထားသည်များကို ရှင်းမည်</string>
+    <string name="a11y_search">ရှာဖွေရန်</string>
+    <string name="a11y_change_layout">အပြင်အဆင် ပြောင်းရန်</string>
+    <string name="a11y_settings">ဆက်တင်များ</string>
+    <string name="a11y_select_all">အားလုံးကို ရွေးမည်</string>
+    <string name="a11y_deselect_all">ရွေးချယ်ထားသည်များကို ပယ်ဖျက်မည်</string>
+
+    <string name="a11y_action_select">ရွေးချယ်မည်</string>
+    <string name="a11y_action_play">ဖွင့်မည်</string>
+    <string name="a11y_action_open_folder">ဖိုင်တွဲဖွင့်မည်</string>
+    <string name="a11y_folder_desc">ဖိုင်တွဲ: %1$s, ဗီဒီယို %2$d ခု</string>
+    <string name="a11y_video_desc">ဗီဒီယို: %1$s, ကြာချိန်: %2$s</string>
+    <string name="a11y_selected">ရွေးချယ်ထားသည်</string>
+    <string name="a11y_not_selected">မရွေးချယ်ထားပါ</string>
+
+    <string name="a11y_rename">အမည်ပြောင်းရန်</string>
+    <string name="a11y_move">နေရာရွှေ့ရန်</string>
+    <string name="a11y_info">အချက်အလက်များ ကြည့်ရန်</string>
+    <string name="a11y_delete">ဖျက်မည်</string>
+    <string name="a11y_resume_recent">နောက်ဆုံးကြည့်ခဲ့သည့် ဗီဒီယိုကို ဆက်ဖွင့်မည်</string>
+
+    <string name="a11y_action_pause">ရပ်မည်</string>
+    <string name="a11y_player_chapters">အခန်းများ (Chapters)</string>
+    <string name="a11y_player_subtitles">စာတန်းထိုးများ (Subtitles)</string>
+    <string name="a11y_player_audio">အသံလမ်းကြောင်းများ (Audio)</string>
+    <string name="a11y_player_more">အခြားရွေးချယ်စရာများ</string>
+    <string name="a11y_player_previous">ယခင် ဗီဒီယို</string>
+    <string name="a11y_player_next">နောက် ဗီဒီယို</string>
+    <string name="a11y_player_lock">ခလုတ်များကို လော့ခ်ချမည်</string>
+    <string name="a11y_player_unlock">လော့ခ် ဖြုတ်မည်</string>
+    <string name="a11y_player_rotation">မျက်နှာပြင် လှည့်မည်</string>
+    <string name="a11y_player_aspect_ratio">အချိုးအစား ပြောင်းမည်</string>
+    <string name="a11y_player_pip">မျက်နှာပြင်သေးဖြင့် ကြည့်မည် (PiP)</string>
+    <string name="a11y_player_handedness">ခလုတ်နေရာ ပြောင်းမည်</string>
+
+    <string name="a11y_show_controls">ပလေယာ ခလုတ်များကို ပြမည်</string>
+    <string name="a11y_hide_controls">ပလေယာ ခလုတ်များကို ဖျောက်မည်</string>
+
+    <string name="a11y_elapsed_time">ကြာမြင့်ချိန် - %s</string>
+    <string name="a11y_remaining_time">ကျန်ရှိချိန် - %s</string>
+    <string name="a11y_auto_pip">အလိုအလျောက် Picture-in-Picture</string>
+
+    <string name="a11y_current_time">ရောက်ရှိနေသည့်အချိန် - %s</string>
+    <string name="a11y_total_time">စုစုပေါင်း ကြာချိန် - %s</string>
+    <string name="a11y_speed_normal">ပုံမှန် အမြန်နှုန်း</string>
+    <string name="a11y_speed_custom">အမြန်နှုန်း - %s</string>
+
+    <plurals name="plural_items">
+        <item quantity="one">ဖိုင် %1$d ခု</item>
+        <item quantity="other">ဖိုင် %1$d ခု</item>
+    </plurals>
+
+    <plurals name="seconds">
+        <item quantity="one">%1$d စက္ကန့်</item>
+        <item quantity="other">%1$d စက္ကန့်</item>
+    </plurals>
+</resources>

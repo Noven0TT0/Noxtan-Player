@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">NoxtanPlayer</string>
+
+    <string name="generic_reset">Reset to Default</string>
+    <string name="generic_share">Share</string>
+    <string name="generic_confirm">Confirm</string>
+    <string name="generic_cancel">Cancel</string>
+    <string name="generic_ok">OK</string>
+    <string name="generic_unit_ms">ms</string>
+    <string name="generic_disabled">Disabled</string>
+
+    <string name="home_pick_file">Browse Files</string>
+    <string name="home_open_file_picker">Open Device Storage</string>
+    <string name="home_open_url">Stream from URL</string>
+    <string name="home_url_input_label">Network Stream URL</string>
+    <string name="home_invalid_protocol">Unsupported network protocol</string>
+
+    <string name="pref_preferences">Settings</string>
+
+    <string name="pref_appearance_title">Theme &amp; UI</string>
+    <string name="pref_appearance_summary">Customize app colors and dark mode</string>
+    <string name="pref_appearance_category_theme">Visual Theme</string>
+    <string name="pref_appearance_darkmode_system">System Default</string>
+    <string name="pref_appearance_darkmode_light">Light Theme</string>
+    <string name="pref_appearance_darkmode_dark">Dark Theme</string>
+    <string name="pref_appearance_material_you_title">Dynamic Colors</string>
+    <string name="pref_appearance_material_you_summary">Match app colors with your phone\'s wallpaper</string>
+    <string name="pref_appearance_material_you_summary_disabled">Requires Android 12 or later version.</string>
+
+    <string name="pref_player">Player controls</string>
+    <string name="pref_player_summary">Screen orientation, UI behavior and playback rules</string>
+    <string name="pref_player_orientation">Screen Orientation</string>
+    <string name="pref_player_orientation_free">Auto-Rotate (Free)</string>
+    <string name="pref_player_orientation_video">Match Video Aspect</string>
+    <string name="pref_player_orientation_portrait">Force Portrait</string>
+    <string name="pref_player_orientation_reverse_portrait">Reverse Portrait</string>
+    <string name="pref_player_orientation_sensor_portrait">Sensor Portrait</string>
+    <string name="pref_player_orientation_landscape">Force Landscape</string>
+    <string name="pref_player_orientation_reverse_landscape">Reverse Landscape</string>
+    <string name="pref_player_orientation_sensor_landscape">Sensor Landscape</string>
+    <string name="pref_player_draw_over_cutout">Expand into display cutout (Notch)</string>
+    <string name="pref_player_save_position_on_quit">Resume playback from last position</string>
+    <string name="pref_player_double_tap_to_pause">Double tap to play/pause</string>
+    <string name="pref_player_double_tap_to_seek">Double tap to fast forward/rewind</string>
+    <string name="pref_player_double_tap_seek_duration">Skip duration per double tap</string>
+    <string name="pref_player_show_seekbar_when_seeking">Reveal timeline while seeking</string>
+    <string name="pref_player_seeking_title">Navigation &amp; Seeking</string>
+    <string name="pref_player_precise_seeking_title">Exact Frame Seeking</string>
+    <string name="pref_player_precise_seeking_summary">Seek to exact frames instead of keyframes (might be slower)</string>
+    <string name="pref_player_automatically_enter_pip">Auto-enter Picture-in-Picture mode</string>
+    <string name="pref_player_close_after_eof">Exit player when video ends</string>
+    <string name="pref_player_remember_brightness">Save custom brightness level</string>
+
+    <string name="pref_player_gestures">Touch Controls</string>
+    <string name="pref_player_gestures_seek">Swipe horizontally to seek</string>
+    <string name="side_left">Left side</string>
+    <string name="side_right">Right side</string>
+    <string name="pref_player_gestures_brightness">Swipe vertically on %s for brightness</string>
+    <string name="pref_player_gestures_volume">Swipe vertically on %s for volume</string>
+    <string name="pref_player_gestures_hold_for_double_speed">Long press for 2x playback</string>
+    <string name="pref_player_gestures_hold_for_multiple_speed">Long press custom speed multiplier</string>
+
+    <string name="pref_player_controls">Player Interface</string>
+    <string name="pref_player_controls_display_volume_as_percentage">Show volume level as percentage</string>
+    <string name="pref_player_controls_show_loading_circle">Display buffering indicator</string>
+    <string name="pref_player_controls_show_chapter_indicator">Show chapter markers on timeline</string>
+    <string name="pref_player_controls_show_chapters_button">Enable chapter selection menu</string>
+    <string name="pref_player_controls_show_chapters_summary">Visible only if the media file contains chapters</string>
+    <string name="pref_player_display_show_status_bar">Keep system status bar visible</string>
+
+    <string name="pref_player_display">On-Screen Display</string>
+    <string name="pref_player_display_panel_opacity">Settings panel transparency</string>
+    <string name="pref_player_display_panel_transparency_summary">%d%% Solid</string>
+
+    <string name="pref_gesture">Touch &amp; Gestures</string>
+    <string name="pref_gesture_summary">Configure tap and swipe behaviors</string>
+    <string name="pref_gesture_double_tap_title">Screen Double Tap</string>
+    <string name="pref_gesture_double_tap_none">Do Nothing</string>
+    <string name="pref_gesture_double_tap_seek">Skip Forward/Backward</string>
+    <string name="pref_gesture_double_tap_play">Toggle Playback</string>
+    <string name="pref_gesture_double_tap_custom">Custom Lua Command</string>
+    <string name="pref_gesture_double_tap_left_title">Left side double tap</string>
+    <string name="pref_gesture_double_tap_center_title">Center double tap</string>
+    <string name="pref_gesture_double_tap_right_title">Right side double tap</string>
+    <string name="pref_gesture_double_tap_custom_info">For \"Custom\" gestures, define keybindings in input.conf using 0x10001 (left), 0x10002 (center), and 0x10003 (right).</string>
+
+    <string name="pref_gesture_media_title">Hardware Media Keys</string>
+    <string name="pref_gesture_media_previous">Previous Track Key</string>
+    <string name="pref_gesture_media_play">Play/Pause Key</string>
+    <string name="pref_gesture_media_next">Next Track Key</string>
+    <string name="pref_gesture_media_custom_info">For \"Custom\" media keys, configure input.conf using 0x10004 (prev), 0x10005 (play/pause), and 0x10006 (next).</string>
+
+    <string name="pref_decoder">Video Engine</string>
+    <string name="pref_decoder_summary">Hardware acceleration, rendering, pixel formats</string>
+    <string name="pref_decoder_try_hw_dec_title">Use Hardware Acceleration</string>
+    <string name="pref_decoder_gpu_next_title">Enable GPU-Next Video Renderer</string>
+    <string name="pref_decoder_gpu_next_summary">Next-generation Vulkan/OpenGL rendering engine</string>
+    <string name="pref_decoder_debanding_title">Color Debanding Filter</string>
+    <string name="pref_decoder_yuv420p_title">Force YUV420P Chroma Subsampling</string>
+    <string name="pref_decoder_yuv420p_summary">Resolves black screen issues on certain devices. Improves decoding speed but may slightly reduce color depth.</string>
+
+    <string name="pref_subtitles">Captions &amp; Text</string>
+    <string name="pref_subtitles_summary">Language priority, text styling, auto-load</string>
+    <string name="pref_preferred_languages">Language Priority</string>
+    <string name="pref_subtitles_fonts_dir">Custom Fonts Directory</string>
+    <string name="pref_subtitles_preferred_language">Comma-separated list of preferred subtitle language codes (e.g., eng, my, mm).</string>
+    <string name="pref_subtitles_autoload_title">Auto-detect Local Subtitles</string>
+    <string name="pref_subtitles_autoload_summary">Automatically load subtitle files matching the video name from the same folder.</string>
+
+    <string name="pref_audio">Sound &amp; Audio</string>
+    <string name="pref_audio_summary">Audio tracks, spatial channels, volume boost</string>
+    <string name="pref_audio_pitch_correction_title">Maintain Original Pitch</string>
+    <string name="pref_audio_pitch_correction_summary">Keeps voices natural when changing playback speed</string>
+    <string name="pref_audio_channels">Spatial Audio Channels</string>
+    <string name="pref_audio_channels_auto">Automatic</string>
+    <string name="pref_audio_channels_auto_safe">Auto (Safe Mode)</string>
+    <string name="pref_audio_channels_mono">Mono (Single Channel)</string>
+    <string name="pref_audio_channels_stereo">Stereo (2.0)</string>
+    <string name="pref_audio_channels_stereo_reversed">Swap Left/Right (Reversed)</string>
+    <string name="pref_audio_preferred_language">Comma-separated list of preferred audio language codes (e.g., eng, my, mm).</string>
+    <string name="pref_audio_volume_boost_cap">Maximum Volume Boost Limit</string>
+
+    <string name="pref_advanced">System &amp; Advanced</string>
+    <string name="pref_advanced_summary">App data, configuration files, debugging</string>
+    <string name="pref_advanced_mpv_conf_storage_location">Select MPV Config Directory</string>
+    <string name="pref_advanced_mpv_conf">Modify mpv.conf</string>
+    <string name="pref_advanced_input_conf">Modify input.conf</string>
+    <string name="pref_advanced_dump_logs_title">Extract System Logs</string>
+    <string name="pref_advanced_dump_logs_summary">Generate error logs to help troubleshoot application issues</string>
+    <string name="pref_advanced_verbose_logging_title">Enable Verbose Debugging</string>
+    <string name="pref_advanced_verbose_logging_summary">Outputs detailed player logs (May impact performance)</string>
+    <string name="pref_advanced_clear_playback_history">Wipe Playback History</string>
+    <string name="pref_advanced_clear_playback_history_confirm_title">Delete all playback records?</string>
+    <string name="pref_advanced_clear_playback_history_confirm_subtitle">This action will erase all saved video positions, subtitle preferences, and audio delays.</string>
+    <string name="pref_advanced_cleared_playback_history">Playback history has been wiped.</string>
+    <string name="pref_advanced_clear_fonts_cache">Clear Font Cache</string>
+    <string name="pref_advanced_cleared_fonts_cache">Font cache successfully cleared.</string>
+    <string name="pref_advanced_clear_mpv_conf_cache">Reset MPV Configurations</string>
+    <string name="pref_advanced_cleared_mpv_conf_cache">MPV configuration cache reset.</string>
+
+    <string name="pref_custom_buttons_title">Custom Actions</string>
+    <string name="pref_custom_buttons_summary">Bind Lua scripts to UI buttons</string>
+    <string name="pref_custom_button_action_add">Create</string>
+    <string name="pref_custom_button_action_add_title_text">Button Label</string>
+    <string name="pref_custom_button_action_add_already_exists">A button with this name already exists.</string>
+    <string name="pref_custom_button_action_add_required">*Mandatory</string>
+    <string name="pref_custom_button_action_add_optional">(Optional)</string>
+    <string name="pref_custom_button_action_add_content_text">Lua Script (Tap)</string>
+    <string name="pref_custom_button_action_add_long_press_text">Lua Script (Hold)</string>
+    <string name="pref_custom_button_add_button">New Custom Button</string>
+    <string name="pref_custom_button_empty">No custom buttons configured yet.</string>
+    <string name="pref_custom_button_edit_button">Modify Button</string>
+    <string name="pref_custom_button_edit_button_id">(Internal ID: %d)</string>
+    <string name="pref_custom_button_delete_button">Remove Button</string>
+    <string name="pref_custom_button_delete_confirmation">Delete the custom button \"%s\"?</string>
+
+    <string name="pref_about_title">App Info</string>
+    <string name="pref_about_summary">Version, open-source licenses</string>
+    <string name="pref_about_app_version">Current Release</string>
+    <string name="pref_about_app_version_formatted" translatable="false">%s %s</string>
+    <string name="pref_about_oss_libraries">Third-Party Licenses</string>
+    <string name="pref_about_privacy_policy">Privacy &amp; Data Policy</string>
+
+    <string name="player_sheets_add_ext_sub">Import Subtitle File</string>
+    <string name="player_sheets_add_ext_audio">Import Audio Track</string>
+    <string name="player_sheets_tracks_off">Disable</string>
+    <string name="player_sheets_track_title_w_lang" translatable="false">#%d: %s (%s)</string>
+    <string name="player_sheets_track_title_wo_lang" translatable="false">#%d: %s</string>
+    <string name="player_sheets_track_lang_wo_title" translatable="false">#%d: %s</string>
+    <string name="player_sheets_chapter_title_substitute_audio">Audio Stream #%d</string>
+    <string name="player_sheets_chapter_title_substitute_subtitle">Subtitle Stream #%d</string>
+    <string name="player_sheets_subtitles_footer_secondary_sid_no_styles">Note: Secondary subtitles ignore advanced ASS/SSA styling.</string>
+    <string name="player_sheets_subtitles_settings_title">Subtitle Properties</string>
+    <string name="player_sheets_subtitles_color_text">Text Color</string>
+    <string name="player_sheets_subtitles_color_border">Stroke Color</string>
+    <string name="player_sheets_subtitles_color_background">Box Color</string>
+    <string name="player_sheets_subtitles_border_style">Outline Rendering</string>
+
+    <string name="player_sheets_subtitles_border_style_outline_and_shadow">Text Outline &amp; Shadow</string>
+    <string name="player_sheets_subtitles_border_style_opaque_box">Solid Background Box</string>
+    <string name="player_sheets_subtitles_border_style_background_box">Transparent Background Box</string>
+    <string name="player_sheets_subtitles_shadow_offset">Drop Shadow Depth</string>
+    <string name="player_sheets_sub_color_red">Red Channel</string>
+    <string name="player_sheets_sub_color_green">Green Channel</string>
+    <string name="player_sheets_sub_color_blue">Blue Channel</string>
+    <string name="player_sheets_sub_color_alpha">Transparency (Alpha)</string>
+    <string name="player_sheets_sub_override_ass">Force custom styles on ASS/SSA</string>
+    <string name="player_sheets_sub_scale">Display Size Multiplier</string>
+    <string name="player_sheets_sub_position">Vertical Placement</string>
+    <string name="player_sheets_sub_typography_card_title">Font Styling</string>
+    <string name="player_sheets_sub_typography_font">Typeface</string>
+    <string name="player_sheets_sub_typography_font_size">Base Size</string>
+    <string name="player_sheets_sub_typography_border_size">Stroke Thickness</string>
+    <string name="player_sheets_sub_colors_card_title">Palette</string>
+    <string name="player_sheets_sub_misc_card_title">Extra Settings</string>
+    <string name="player_sheets_sub_delay_card_title">Subtitle Synchronization</string>
+    <string name="player_sheets_sub_delay_card_delay">Time Offset</string>
+    <string name="player_sheets_sub_delay_card_speed">Rate Adjust</string>
+    <string name="player_sheets_sub_delay_affected_subtitle">Apply Offset To</string>
+    <string name="player_sheets_sub_delay_subtitle_type_primary">Main Track</string>
+    <string name="player_sheets_sub_delay_subtitle_type_secondary">Secondary Track</string>
+    <string name="player_sheets_sub_delay_subtitle_type_primary_and_secondary">Both Tracks</string>
+    <string name="player_sheets_sub_delay_subtitle_voice_heard">Audio Heard</string>
+    <string name="player_sheets_sub_delay_subtitle_text_seen">Text Appeared</string>
+    <string name="player_sheets_delay_set_as_default">Save as Global Default</string>
+    <string name="player_sheets_audio_delay_card_title">Audio Synchronization</string>
+    <string name="player_sheets_sub_delay_audio_sound_heard">Speech Heard</string>
+    <string name="player_sheets_sub_delay_sound_sound_spotted">Action Spotted</string>
+
+    <string name="player_sheets_video_settings_title">Video Adjustments</string>
+    <string name="player_sheets_deband_title">Debanding Filter</string>
+    <string name="player_sheets_deband_none">Off</string>
+    <string name="player_sheets_deband_cpu">Software (CPU)</string>
+    <string name="player_sheets_deband_gpu">Hardware (GPU)</string>
+    <string name="player_sheets_deband_iterations">Passes</string>
+    <string name="player_sheets_deband_threshold">Strength</string>
+    <string name="player_sheets_deband_range">Radius</string>
+    <string name="player_sheets_deband_grain">Noise Injection</string>
+    <string name="player_sheets_filters_title">Color Grading</string>
+    <string name="player_sheets_filters_brightness">Luminance</string>
+    <string name="player_sheets_filters_contrast">Contrast</string>
+    <string name="player_sheets_filters_gamma">Gamma Curve</string>
+    <string name="player_sheets_filters_Saturation">Color Vibrance</string>
+    <string name="player_sheets_filters_hue">Color Tint</string>
+    <string name="player_sheets_filters_warning">Note: Hardware drivers may restrict certain color filters.</string>
+
+    <string name="player_sheets_speed_slider_label">Playback Rate</string>
+    <string name="player_sheets_speed_make_default">Set as startup speed</string>
+
+    <string name="player_sheets_decoder_formatted">%1$s (%2$s)</string>
+
+    <string name="numeric_chooser_value_too_big">Exceeds maximum</string>
+    <string name="numeric_chooser_value_too_small">Below minimum</string>
+
+    <string name="player_sheets_more_title">Extra Tools</string>
+    <string name="player_sheets_stats_page_title">Telemetry Overlay</string>
+    <string name="player_sheets_stats_page_chip">View %d</string>
+    <string name="player_sheets_custom_buttons_title">Action Shortcuts</string>
+    <string name="player_seek_n_seconds">%d sec</string>
+    <string name="player_speed" translatable="false">%.2fx</string>
+    <string name="player_gesture_seek_indicator" translatable="false">%c%s\n[%s]</string>
+
+    <string name="player_aspect_fit">Contain (Fit)</string>
+    <string name="player_aspect_crop">Zoom (Crop)</string>
+    <string name="player_aspect_stretch">Fill (Stretch)</string>
+
+    <string name="crash_screen_title">Application Error</string>
+    <string name="crash_screen_subtitle">It seems %s ran into a problem. Please share the error logs with the developer to help fix this issue.</string>
+    <string name="crash_screen_logs_title">Error Details:</string>
+    <string name="crash_screen_share">Export Error Logs</string>
+    <string name="crash_screen_restart">Relaunch Application</string>
+
+    <string name="timer_picker_enter_timer">Input Duration</string>
+    <string name="timer_picker_pick_time">Select Time</string>
+    <string name="timer_title">Auto-Sleep Timer</string>
+    <string name="timer_remaining">%s left</string>
+
+    <string name="toast_sleep_timer_ended">Playback stopped by sleep timer.</string>
+
+    <string name="volume_slider_percentage_positive_boost" translatable="false">%d%% + %d</string>
+    <string name="volume_slider_percentage_negative_boost" translatable="false">%d%% - %d</string>
+    <string name="volume_slider_percentage_other" translatable="false">%d%% (%d)</string>
+    <string name="volume_slider_steps_positive_boost" translatable="false">%d + %d</string>
+    <string name="volume_slider_steps_negative_boost" translatable="false">%d - %d</string>
+    <string name="volume_slider_steps_other" translatable="false">%d (%d)</string>
+
+    <string name="value_percentage_int" translatable="false">%d%%</string>
+    <string name="value_percentage_float" translatable="false">%.2f%%</string>
+
+    <string name="github_repo_url" translatable="false">https://github.com/Noven0TT0/Noxtan-Player</string>
+    <string name="privacy_policy_url">https://sites.google.com/view/noxtan-player-privacy-policy/home</string>
+    <string name="swap_the_volume_and_brightness_slider">Reverse left/right swipe zones for Volume &amp; Brightness</string>
+    <string name="pref_player_display_reduce_player_animation">Disable UI transition animations</string>
+    <string name="pref_player_display_hide_player_control_time">UI auto-hide delay</string>
+    <string name="show_splash_ovals_on_double_tap_to_seek">Enable ripple effect on double tap</string>
+    <string name="show_time_on_double_tap_to_seek">Display skipped seconds</string>
+    <string name="show_icon_on_double_tap_to_seek">Display skip arrow icons</string>
+
+    <string name="pref_enable_background_playback">Audio-only Background Mode</string>
+    <string name="pref_enable_background_playback_summary">Keep playing media audio when navigating away from the app</string>
+    <string name="notification_channel_name">Media Service</string>
+    <string name="notification_channel_description">Background playback control notifications</string>
+    <string name="notification_playing">Audio playing in background</string>
+    <string name="notification_pause">Halt</string>
+    <string name="notification_play">Resume</string>
+    <string name="notification_stop">Quit</string>
+    <string name="notification_forward">Skip Fwd</string>
+    <string name="notification_rewind">Skip Bwd</string>
+
+    <string name="about_acknowledgement">ACKNOWLEDGEMENT</string>
+    <string name="about_based_on">Based on NoxtanPlayer</string>
+    <string name="about_based_on_desc">NoxtanPlayer is a modified fork of the open-source NoxtanPlayer project.</string>
+    <string name="about_info_legal">INFORMATION &amp; LEGAL</string>
+    <string name="about_system_diagnostics">System Diagnostics</string>
+    <string name="about_system_diagnostics_desc">View hardware and media engine details</string>
+    <string name="about_open_source_licenses">Open Source Licenses</string>
+    <string name="about_open_source_licenses_desc">Third-party software &amp; libraries</string>
+
+    <string name="pref_advanced_group_config">CONFIGURATION FILES</string>
+    <string name="pref_advanced_group_debugging">DEBUGGING &amp; LOGS</string>
+    <string name="pref_advanced_group_data">DATA &amp; CACHE</string>
+
+    <string name="pref_advanced_clear_playback_history_summary">Delete all saved playback positions and track selections</string>
+    <string name="pref_advanced_clear_mpv_conf_cache_summary">Wipe cached MPV configuration files</string>
+    <string name="pref_advanced_clear_fonts_cache_summary">Wipe cached custom subtitle fonts</string>
+
+    <string name="search_placeholder">Search…</string>
+
+    <string name="cinematic_mode_title">Cinematic Mode</string>
+    <string name="cinematic_mode_desc">Turn on Cinematic Mode for stunning clarity, richer colors, and a truly immersive visual experience.</string>
+    <string name="cinematic_mode_enable">Enable Cinematic Mode</string>
+    <string name="cinematic_mode_disable">Disable Cinematic Mode</string>
+
+    <string name="swipe_protector_title">Swipe Protector</string>
+    <string name="swipe_protector_desc">Enable this feature to block system back gestures on the edges.</string>
+    <string name="swipe_protector_target_edge">Target Edge</string>
+    <string name="swipe_protector_left">Left</string>
+    <string name="swipe_protector_right">Right</string>
+    <string name="swipe_protector_both">Both</string>
+    <string name="swipe_protector_left_pos">Left Edge Position</string>
+    <string name="swipe_protector_right_pos">Right Edge Position</string>
+
+    <string name="eye_care_title">Eye Care &amp; Night Mode</string>
+    <string name="eye_care_bluelight">Blue Light Filter</string>
+    <string name="eye_care_bluelight_desc">Reduce blue light for better sleep</string>
+    <string name="eye_care_antiglare">Anti-Glare (Highlights)</string>
+    <string name="eye_care_antiglare_desc">Suppress painfully bright white areas</string>
+    <string name="eye_care_antistrobe">Anti-Strobe Protection</string>
+    <string name="eye_care_antistrobe_desc">Smooth out flashing lights and lightning</string>
+    <string name="eye_care_autodim">Smart Auto-Dimming</string>
+    <string name="eye_care_autodim_desc">Auto adjust brightness based on scene</string>
+    <string name="eye_care_nightaudio">Night Mode Audio</string>
+    <string name="eye_care_nightaudio_desc">Boost dialogs, suppress explosions</string>
+
+    <string name="welcome_to_noxtan">Welcome to Noxtan</string>
+    <string name="permission_description">To provide a seamless playback experience, NoxtanPlayer needs access to your device\'s storage to automatically scan, organize, and play your local videos.</string>
+    <string name="grant_storage_access">Grant Storage Access</string>
+    <string name="proudly_open_source">Proudly Open Source</string>
+    <string name="toast_first_video">This is the first video</string>
+    <string name="toast_last_video">This is the last video. Cannot skip to next.</string>
+
+    <!-- Accessibility (Talkback) Strings -->
+    <string name="a11y_back_close">Back or Close</string>
+    <string name="a11y_close_search">Close Search</string>
+    <string name="a11y_clear_search">Clear search text</string>
+    <string name="a11y_search">Search</string>
+    <string name="a11y_change_layout">Change layout</string>
+    <string name="a11y_settings">Settings</string>
+    <string name="a11y_select_all">Select all</string>
+    <string name="a11y_deselect_all">Clear selection</string>
+
+    <string name="a11y_action_select">Select</string>
+    <string name="a11y_action_play">Play</string>
+    <string name="a11y_action_open_folder">Open folder</string>
+    <string name="a11y_folder_desc">Folder: %1$s, %2$d videos</string>
+    <string name="a11y_video_desc">Video: %1$s, Duration: %2$s</string>
+    <string name="a11y_selected">Selected</string>
+    <string name="a11y_not_selected">Not selected</string>
+
+    <string name="a11y_rename">Rename</string>
+    <string name="a11y_move">Move</string>
+    <string name="a11y_info">Information</string>
+    <string name="a11y_delete">Delete</string>
+    <string name="a11y_resume_recent">Resume recent video</string>
+
+    <string name="a11y_action_pause">Pause</string>
+    <string name="a11y_player_chapters">Chapters</string>
+    <string name="a11y_player_subtitles">Subtitles</string>
+    <string name="a11y_player_audio">Audio tracks</string>
+    <string name="a11y_player_more">More options</string>
+    <string name="a11y_player_previous">Previous video</string>
+    <string name="a11y_player_next">Next video</string>
+    <string name="a11y_player_lock">Lock controls</string>
+    <string name="a11y_player_unlock">Unlock controls</string>
+    <string name="a11y_player_rotation">Rotate screen</string>
+    <string name="a11y_player_aspect_ratio">Change aspect ratio</string>
+    <string name="a11y_player_pip">Picture in Picture</string>
+    <string name="a11y_player_handedness">Swap controls position</string>
+
+    <string name="a11y_show_controls">Show player controls</string>
+    <string name="a11y_hide_controls">Hide player controls</string>
+
+    <string name="a11y_elapsed_time">Elapsed time: %s</string>
+    <string name="a11y_remaining_time">Remaining time: %s</string>
+    <string name="a11y_auto_pip">Auto Picture-in-Picture</string>
+
+    <string name="a11y_current_time">Current position: %s</string>
+    <string name="a11y_total_time">Total duration: %s</string>
+    <string name="a11y_speed_normal">Normal speed</string>
+    <string name="a11y_speed_custom">Speed: %s</string>
+
+    <plurals name="plural_items">
+        <item quantity="one">%1$d file</item>
+        <item quantity="other">%1$d files</item>
+    </plurals>
+
+    <plurals name="seconds">
+        <item quantity="one">%1$d sec</item>
+        <item quantity="other">%1$d secs</item>
+    </plurals>
+</resources>
