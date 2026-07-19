@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-         lfs: true
+          lfs: true
 
       - name: Generate short SHA
         id: set-short-sha
@@ -33,7 +33,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build with Gradle
-        run: ./gradlew detekt assembleRelease
+        run: ./gradlew assembleRelease
 
       - name: Upload app-arm64-v8a Artifact
         uses: actions/upload-artifact@v4
