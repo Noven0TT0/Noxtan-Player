@@ -1,27 +1,22 @@
-# <img alt="app icon" src=".github/assets/app_icon.svg" width="48" /> NoxtanPlayer
-A media player for Android based on [mpv-android](https://github.com/mpv-android/mpv-android) aiming to provide a *nicer* user interface over the original.
+# Noxtan Player
 
-[![Build](https://github.com/Noven0TT0/Noxtan-Player/actions/workflows/build.yml/badge.svg)](https://github.com/Noven0TT0/Noxtan-Player/actions/workflows/build.yml)
-## Additional features
-- Nicer player UI
-- Better playback history implementation
-- Easier customization
-- Sleep timer, Speed presets
-- Smoother PiP
+A beautiful, cinematic, and modern media player for Android based on [mpv-android](https://github.com/mpv-android/mpv-android), offering a significantly enhanced user interface and advanced playback features.
 
-## Showcase
-
-<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.png" width="24%" /> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.png" width="24%" /> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US.png" width="24%"> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/4_en-US.png" width="24%" />
-<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/5_en-US.png" width="49%" /> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/6_en-US.png" width="49%" />
-<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/7_en-US.png" width="49%" /> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/8_en-US.png" width="49%" />
+## Features
+* **Beautiful Material 3 UI:** Seamless, modern design with smooth animations.
+* **Cinematic Mode & Eye Care:** Built-in video filters (Blue light, anti-glare, auto-dimming) to protect your eyes.
+* **Smart Subtitles:** Auto-searching and matching subtitles, customizable styles, and delay synchronization.
+* **PiP Mode:** Smooth Picture-in-Picture transitions with automatic activation when leaving the app.
+* **Background Playback:** Seamlessly continue listening to audio in the background.
+* **Gesture Controls:** Intuitive vertical swipes for volume/brightness, horizontal swipes for seek, and double-taps.
+* **Enhanced Playback History:** Remembers your position, subtitle tracks, and playback speed for each video.
+* **Sleep Timer:** Set a timer to automatically pause playback.
 
 ## Installation
-You can download the app from the [Github releases page](https://github.com/Noven0TT0/Noxtan-Player/releases).
+You can download the latest APK from the [Releases](https://github.com/Noven0TT0/Noxtan-Player/releases) page.
 
-*Official store distributions are coming soon.*
+## Acknowledgements
+Noxtan Player is heavily based on [mpvKt](https://github.com/abdallahmehiz/mpvKt) by abdallahmehiz. Special thanks to the original author and the [mpv-android](https://github.com/mpv-android/mpv-android) team.
 
-You can also access nightly builds from [here](https://github.com/Noven0TT0/Noxtan-Player/actions/workflows/nightlies.yml)
-
-## Acknowledgments
-- [mpv-android](https://github.com/mpv-android) for the base mpv library to use for this project.
-- [NoxtanPlayer (mpvKt)](https://github.com/abdallahmehiz/NoxtanPlayer) by abdallahmehiz, which this project is based on. Special thanks to the original author.
+## License
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
