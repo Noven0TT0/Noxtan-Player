@@ -1,7 +1,7 @@
 # <img alt="app icon" src=".github/assets/app_icon.svg" width="48" /> NoxtanPlayer
 A media player for Android based on [mpv-android](https://github.com/mpv-android/mpv-android) aiming to provide a *nicer* user interface over the original.
 
-[![Build](https://github.com/abdallahmehiz/NoxtanPlayer/actions/workflows/build.yml/badge.svg)](https://github.com/abdallahmehiz/NoxtanPlayer/actions/workflows/build.yml)
+[![Build](https://github.com/Noven0TT0/Noxtan-Player/actions/workflows/build.yml/badge.svg)](https://github.com/Noven0TT0/Noxtan-Player/actions/workflows/build.yml)
 ## Additional features
 - Nicer player UI
 - Better playback history implementation
@@ -16,12 +16,12 @@ A media player for Android based on [mpv-android](https://github.com/mpv-android
 <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/7_en-US.png" width="49%" /> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/8_en-US.png" width="49%" />
 
 ## Installation
-you can download the app from the [Github releases page](https://github.com/abdallahmehiz/NoxtanPlayer/releases) or one of the official sources listed below:
+You can download the app from the [Github releases page](https://github.com/Noven0TT0/Noxtan-Player/releases).
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on-en.svg" height="80">](https://f-droid.org/en/packages/live.mehiz.NoxtanPlayer/)
-[<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" height="80">](https://apt.izzysoft.de/fdroid/index/apk/live.mehiz.NoxtanPlayer)
-[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80">](https://play.google.com/store/apps/details?id=live.mehiz.NoxtanPlayer)
+*Official store distributions are coming soon.*
 
-You can also access nightly builds from [here](https://github.com/abdallahmehiz/NoxtanPlayer/actions/workflows/nightlies.yml)
+You can also access nightly builds from [here](https://github.com/Noven0TT0/Noxtan-Player/actions/workflows/nightlies.yml)
+
 ## Acknowledgments
 - [mpv-android](https://github.com/mpv-android) for the base mpv library to use for this project.
+- [NoxtanPlayer (mpvKt)](https://github.com/abdallahmehiz/NoxtanPlayer) by abdallahmehiz, which this project is based on. Special thanks to the original author.
