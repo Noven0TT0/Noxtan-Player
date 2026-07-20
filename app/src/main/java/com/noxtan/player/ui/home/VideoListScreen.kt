@@ -57,6 +57,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -116,14 +117,9 @@ data class VideoListScreen(
     val isRefreshing by viewModel.isUserRefreshing.collectAsState()
     val isFabVisible by viewModel.isFabVisible.collectAsState()
     val recentVideo by viewModel.getRecentVideoInFolder(folderPath).collectAsState(null)
-    val videos by viewModel.getVideosForFolder(folderPath).collectAsState()
-
-    LaunchedEffect(videos) {
-      viewModel.generateThumbnailsForList(videos)
-    }
-    DisposableEffect(Unit) {
-      onDispose { viewModel.stopThumbnailGeneration() }
-    }
+    val videos by remember(viewModel, folderPath) {
+      viewModel.getVideosForFolder(folderPath)
+    }.collectAsState()
 
     val isSelectionMode by viewModel.isSelectionMode.collectAsState()
     val selectedPaths by viewModel.selectedPaths.collectAsState()
@@ -277,7 +273,10 @@ data class VideoListScreen(
     val rightPadding = with(density) { navigationBars.getRight(density, layoutDirection).toDp() }
     val bottomPadding = with(density) { navigationBars.getBottom(density).toDp() }
     val gridState = rememberLazyGridState()
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
+      state = rememberTopAppBarState(),
+      snapAnimationSpec = null // ကြိုက်တဲ့နေရာမှာ ရပ်ခွင့်ပြုပြီး UI Junk ဖြစ်ခြင်းကို သက်သာစေသည်
+    )
 
     val nestedScrollConnection = remember(gridState) {
       object : NestedScrollConnection {
@@ -372,9 +371,12 @@ data class VideoListScreen(
             }
           }
         } else {
-            LazyVerticalGrid(
-              state = gridState,
-              columns = GridCells.Fixed(viewConfig.gridCount),
+          val selectedBgColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f)
+          val folderIconBgColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)
+
+          LazyVerticalGrid(
+            state = gridState,
+            columns = GridCells.Fixed(viewConfig.gridCount),
             modifier = Modifier.fillMaxSize(),
             userScrollEnabled = !isAppResuming,
             contentPadding = PaddingValues(
@@ -956,7 +958,7 @@ data class VideoListScreen(
                     else Modifier
                   )
                   .padding(12.dp)
-                  .alpha(if (isAllowed) 1f else 0.4f),
+                  .graphicsLayer { alpha = if (isAllowed) 1f else 0.4f }, // GPU-accelerated graphics layer ဖြင့် အစားထိုးလိုက်ပါသည်
                 verticalAlignment = Alignment.CenterVertically
               ) {
                 Box(

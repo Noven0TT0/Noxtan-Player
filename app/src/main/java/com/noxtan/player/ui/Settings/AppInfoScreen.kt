@@ -110,10 +110,9 @@ object AboutScreen : Screen {
           horizontalAlignment = Alignment.CenterHorizontally
         ) {
           Surface(
-            modifier = Modifier.size(100.dp),
-            shape = RoundedCornerShape(24.dp),
-            color = MaterialTheme.colorScheme.surface,
-            tonalElevation = 2.dp
+            modifier = Modifier.size(150.dp),
+            color = androidx.compose.ui.graphics.Color.Transparent, // ဘောင်အရောင်ကို ဖျောက်လိုက်ပါသည်
+            tonalElevation = 0.dp                                  // Shadow ကို ဖျောက်လိုက်ပါသည်
           ) {
             Box(
               modifier = Modifier.fillMaxSize().padding(16.dp),

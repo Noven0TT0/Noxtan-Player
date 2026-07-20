@@ -3,7 +3,7 @@ package com.noxtan.player.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Matrix
-import android.media.MediaMetadataRetriever
+import android.os.Build
 import coil3.ImageLoader
 import coil3.asImage
 import coil3.decode.DecodeResult
@@ -11,7 +11,10 @@ import coil3.decode.Decoder
 import coil3.decode.ImageSource
 import coil3.fetch.SourceFetchResult
 import coil3.request.Options
+import com.noxtan.player.engine.NoxtanEngine
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
@@ -21,66 +24,111 @@ class FFmpegCoilDecoder(
   private val options: Options
 ) : Decoder {
 
-  override suspend fun decode(): DecodeResult? = withContext(Dispatchers.IO) {
-    val videoPath = source.file().toString()
-    val context = options.context
-    val thumbDir = File(context.filesDir, "thumbnails").apply { if (!exists()) mkdirs() }
-    val thumbFile = File(thumbDir, "cached_${videoPath.hashCode()}.jpg")
+  override suspend fun decode(): DecodeResult? = thumbnailMutex.withLock {
+    withContext(Dispatchers.IO) {
+      val videoPath = source.file().toString()
+      val context = options.context
+      val thumbDir = File(context.filesDir, "thumbnails").apply { if (!exists()) mkdirs() }
+      val thumbFile = File(thumbDir, "cached_${videoPath.hashCode()}.jpg")
 
-    if (thumbFile.exists() && thumbFile.length() > 0) {
-      val cachedBitmap = android.graphics.BitmapFactory.decodeFile(thumbFile.absolutePath)
-      if (cachedBitmap != null) {
-        return@withContext DecodeResult(
-          image = cachedBitmap.asImage(),
-          isSampled = true
-        )
-      }
-    }
-
-    try {
-      val retriever = MediaMetadataRetriever()
-      retriever.setDataSource(videoPath)
-
-      val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
-      val isLowEnd = activityManager.isLowRamDevice
-
-      val syncOption = if (isLowEnd) MediaMetadataRetriever.OPTION_PREVIOUS_SYNC else MediaMetadataRetriever.OPTION_CLOSEST_SYNC
-      val quality = if (isLowEnd) 70 else 85
-
-      var rawBitmap = retriever.getFrameAtTime(1000000L, syncOption)
-        ?: retriever.frameAtTime
-
-      rawBitmap?.let { bitmap ->
-        val rotationStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION)
-        val rotation = rotationStr?.toInt() ?: 0
-        var finalBitmap = bitmap
-
-        if (rotation != 0) {
-          val matrix = Matrix().apply { postRotate(rotation.toFloat()) }
-          finalBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-          if (finalBitmap != bitmap) bitmap.recycle()
+      // ၁။ Cached ဖိုင်ရှိပြီးသားဆိုရင် တိုက်ရိုက်ဆွဲပြမယ် (အမြန်ဆုံးဖြစ်ပါတယ်)
+      if (thumbFile.exists() && thumbFile.length() > 0) {
+        val cachedBitmap = android.graphics.BitmapFactory.decodeFile(thumbFile.absolutePath)
+        if (cachedBitmap != null) {
+          return@withContext DecodeResult(
+            image = cachedBitmap.asImage(),
+            isSampled = true
+          )
         }
+      }
 
+      var finalBitmap: Bitmap? = null
+      val targetWidth = 320
+      val targetHeight = 180
+
+      // ၂။ ပထမဦးစားပေး - Custom C++ FFmpeg Engine (NoxtanEngine) နဲ့ အရင်စမ်းထုတ်မယ်
+      try {
+        if (NoxtanEngine.isAvailable) {
+          val noxtanEngine = NoxtanEngine()
+          val rotation = noxtanEngine.ffmpegGetRotation(videoPath)
+          var bitmap = Bitmap.createBitmap(targetWidth, targetHeight, Bitmap.Config.ARGB_8888)
+
+          val success = noxtanEngine.ffmpegGetVideoThumbnail(videoPath, bitmap)
+          if (success) {
+            finalBitmap = bitmap
+            if (rotation == 90 || rotation == 270 || rotation == 180) {
+              val matrix = Matrix().apply { postRotate(rotation.toFloat()) }
+              finalBitmap = Bitmap.createBitmap(bitmap, 0, 0, targetWidth, targetHeight, matrix, true)
+              if (finalBitmap != bitmap) {
+                bitmap.recycle()
+              }
+            }
+          }
+        }
+      } catch (e: Exception) {
+        e.printStackTrace()
+      }
+
+      // ၃။ ဒုတိယဦးစားပေး (Fail-safe) - Custom FFmpeg မအောင်မြင်ရင် Built-in MediaMetadataRetriever (Downscaled) နဲ့ အစားထိုးထုတ်ယူမယ်
+      if (finalBitmap == null) {
+        try {
+          val retriever = android.media.MediaMetadataRetriever()
+          retriever.setDataSource(videoPath)
+
+          val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
+          val isLowEnd = activityManager.isLowRamDevice
+          val syncOption = if (isLowEnd) android.media.MediaMetadataRetriever.OPTION_PREVIOUS_SYNC else android.media.MediaMetadataRetriever.OPTION_CLOSEST_SYNC
+
+          // Android 8.1+ ဆိုရင် RAM အသုံးမများအောင် 320x180 ကို ကြိုပြီး Scale ချပြီးမှ Frame ထုတ်ယူပါတယ်
+          val rawBitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            retriever.getScaledFrameAtTime(1000000L, syncOption, targetWidth, targetHeight)
+          } else {
+            retriever.getFrameAtTime(1000000L, syncOption)
+          }
+
+          rawBitmap?.let { bitmap ->
+            val rotationStr = retriever.extractMetadata(android.media.MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION)
+            val rotation = rotationStr?.toInt() ?: 0
+            finalBitmap = bitmap
+
+            if (rotation != 0) {
+              val matrix = Matrix().apply { postRotate(rotation.toFloat()) }
+              finalBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+              if (finalBitmap != bitmap) {
+                bitmap.recycle()
+              }
+            }
+          }
+          retriever.release()
+        } catch (e: Exception) {
+          e.printStackTrace()
+        }
+      }
+
+      // ၄။ ရရှိလာတဲ့ Bitmap ကို JPEG အဖြစ် Cache သိမ်းပြီး ဆွဲပြခိုင်းပါမယ်
+      finalBitmap?.let { bitmap ->
         try {
           FileOutputStream(thumbFile).use { out ->
-            finalBitmap.compress(Bitmap.CompressFormat.JPEG, quality, out)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, out)
           }
         } catch (e: Exception) {
           e.printStackTrace()
         }
 
-        retriever.release()
-
         return@withContext DecodeResult(
-          image = finalBitmap.asImage(),
+          image = bitmap.asImage(),
           isSampled = true
         )
       }
-      retriever.release()
-    } catch (e: Exception) {
-      e.printStackTrace()
+
+      null
     }
-    null
+  }
+
+  companion object {
+    // limitParallelism အစား Coroutines ဗားရှင်းအားလုံးနဲ့ အပြည့်အဝကိုက်ညီတဲ့ Mutex (Mutual Exclusion Lock) ကို သုံးပြီး
+    // Thumbnail တွေကို တစ်ကြိမ်မှာ ၁ ခုစီ စနစ်တကျ အလှည့်ကျ (Sequential) ထုတ်ယူရန် ထိန်းချုပ်ပေးပါတယ်။
+    private val thumbnailMutex = Mutex()
   }
 
   class Factory : Decoder.Factory {

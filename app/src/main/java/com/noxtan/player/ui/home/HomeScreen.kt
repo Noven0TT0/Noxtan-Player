@@ -36,8 +36,10 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.ChevronRight
@@ -244,7 +246,10 @@ object HomeScreen : Screen {
     val bottomPadding = with(density) { navigationBars.getBottom(density).toDp() }
 
     val gridState = rememberLazyGridState()
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
+      state = rememberTopAppBarState(),
+      snapAnimationSpec = null // Snapping (အတင်းဆွဲကပ်ခြင်း) ကို ပိတ်လိုက်ပြီး ကြိုက်တဲ့နေရာမှာ ရပ်ခွင့်ပြုသည်
+    )
 
     val nestedScrollConnection = remember(gridState) {
       object : NestedScrollConnection {
@@ -339,16 +344,17 @@ object HomeScreen : Screen {
           Column(
             modifier = Modifier
               .fillMaxSize()
+              .verticalScroll(rememberScrollState())
+              .padding(padding) // Top Bar ၏နောက်ကွယ်သို့ ရောက်မသွားစေရန် အောက်သို့ တွန်းချလိုက်ပါသည်
               .padding(32.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
           ) {
             // App Logo
             androidx.compose.material3.Surface(
-              modifier = Modifier.size(100.dp),
-              shape = RoundedCornerShape(24.dp),
-              color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
-              tonalElevation = 2.dp
+              modifier = Modifier.size(200.dp),
+              color = androidx.compose.ui.graphics.Color.Transparent, // ဘောင်အရောင်ကို ဖျောက်လိုက်ပါသည်
+              tonalElevation = 0.dp                                  // Shadow ကို ဖျောက်လိုက်ပါသည်
             ) {
               Box(
                 modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -427,14 +433,9 @@ object HomeScreen : Screen {
             }
           }
         } else {
-          val searchResults by viewModel.getVideosForFolder(null).collectAsState()
-
-          LaunchedEffect(searchResults) {
-            viewModel.generateThumbnailsForList(searchResults)
-          }
-          DisposableEffect(Unit) {
-            onDispose { viewModel.stopThumbnailGeneration() }
-          }
+          val searchResults by remember(viewModel) {
+            viewModel.getVideosForFolder(null)
+          }.collectAsState()
 
           if (isSearchActive && searchQuery.isNotEmpty()) {
             if (searchResults.isEmpty()) {
@@ -580,6 +581,10 @@ object HomeScreen : Screen {
                 }
               }
             } else {
+              // Color Object အသစ်တွေ အကြိမ်ကြိမ်မဆောက်အောင် LazyVerticalGrid အပြင်မှာ တစ်ကြိမ်တည်း ကြိုတင်သတ်မှတ်ထားပါသည်
+              val selectedBgColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f)
+              val itemBgColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)
+
               LazyVerticalGrid(
                 state = gridState,
                 columns = GridCells.Fixed(viewConfig.gridCount),
@@ -612,7 +617,7 @@ object HomeScreen : Screen {
                         }
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(16.dp))
-                        .background(if (isSelected) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f) else Color.Transparent)
+                        .background(if (isSelected) selectedBgColor else Color.Transparent) // Pre-allocated Color အား သုံးထားပါသည်
                         .combinedClickable(
                           onClickLabel = if (isSelectionMode) selectActionLabel else openActionLabel,
                           onLongClickLabel = selectActionLabel,
@@ -637,7 +642,7 @@ object HomeScreen : Screen {
                         modifier = Modifier
                           .size(56.dp)
                           .clip(RoundedCornerShape(16.dp))
-                          .background(MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)),
+                          .background(itemBgColor), // Pre-allocated Color အား သုံးထားပါသည်
                         contentAlignment = Alignment.Center
                       ) {
                         Icon(

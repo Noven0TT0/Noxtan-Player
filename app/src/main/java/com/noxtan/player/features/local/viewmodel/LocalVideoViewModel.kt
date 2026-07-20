@@ -1,6 +1,5 @@
 package com.noxtan.player.features.local.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.noxtan.player.data.local.db.VideoEntity
@@ -11,8 +10,8 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOn // flowOn ကို Import လုပ်ပါသည်
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.io.File
@@ -168,7 +167,9 @@ class LocalVideoViewModel(
     }
 
     if (config.isAscending) sorted else sorted.reversed()
-  }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+  }
+    .flowOn(Dispatchers.Default) // Grouping, Mapping, Sorting များကို Background Thread သို့ ပို့လိုက်ပါသည်
+    .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
   fun getVideosForFolder(folderPath: String?): StateFlow<List<VideoEntity>> {
     return combine(_allVideos, _searchQuery, _viewConfig) { videos, query, config ->
@@ -186,7 +187,9 @@ class LocalVideoViewModel(
         SortType.DURATION -> filtered.sortedBy { it.duration }
       }
       if (config.isAscending) sorted else sorted.reversed()
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+    }
+      .flowOn(Dispatchers.Default) // Filtering, Sorting တွက်ချက်မှုများကို Background Thread သို့ ပို့လိုက်ပါသည်
+      .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
   }
 
   fun getGlobalRecentVideo() = repository.getGlobalRecentVideo()

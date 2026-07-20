@@ -13,7 +13,11 @@ class MediaStoreScanner(
   private val noxtanEngine: NoxtanEngine
 ) {
 
-  fun scanVideos(historyMap: Map<String, Long>, thumbMap: Map<String, String?>): List<VideoEntity> {
+  fun scanVideos(
+    existingMap: Map<String, VideoEntity>, // စကင်ဖတ်ပြီးသား Video စာရင်းကို လက်ခံရယူပါသည်
+    historyMap: Map<String, Long>,
+    thumbMap: Map<String, String?>
+  ): List<VideoEntity> {
     val videoList = mutableListOf<VideoEntity>()
     val collection = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
       MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
@@ -54,43 +58,60 @@ class MediaStoreScanner(
 
       while (c.moveToNext()) {
         val path = c.getString(pathCol) ?: ""
-        if (path.isNotBlank() && File(path).exists()) {
-          var duration = c.getLong(durCol)
+        if (path.isNotBlank()) {
 
-          if (duration <= 0) {
-            try {
-              duration = noxtanEngine.ffmpegGetDuration(path)
-            } catch (e: Exception) {
-              duration = 0L
-            }
-          }
-
-          val w = c.getInt(wCol)
-          val h = c.getInt(hCol)
-          var resolutionStr = "${w}x${h}"
-
-          if (w <= 0 || h <= 0) {
-            runCatching {
-              val ffmpegRes = noxtanEngine.ffmpegGetResolution(path)
-              if (ffmpegRes != "0x0") resolutionStr = ffmpegRes
-            }
-          }
-
-          videoList.add(
-            VideoEntity(
-              id = c.getLong(idCol),
-              title = c.getString(nameCol) ?: "Unknown",
-              path = path,
-              duration = duration,
-              size = c.getLong(sizeCol),
-              dateAdded = c.getLong(dateCol),
-              mimeType = c.getString(mimeCol) ?: "video/mp4",
-              resolution = resolutionStr,
-              lastPlayedPosition = historyMap[path] ?: 0L,
-              lastPlayedTimestamp = 0L,
-              thumbnailPath = thumbMap[path]
+          // အကယ်၍ အရင်က စကင်ဖတ်ပြီးသား ဗီဒီယိုဖြစ်နေရင် File exist check ရော Heavy C++ FFmpeg parsing ရော မလုပ်တော့ဘဲ Bypass လုပ်ပါသည်
+          val existing = existingMap[path]
+          if (existing != null) {
+            videoList.add(
+              existing.copy(
+                id = c.getLong(idCol),
+                lastPlayedPosition = historyMap[path] ?: existing.lastPlayedPosition,
+                thumbnailPath = thumbMap[path] ?: existing.thumbnailPath
+              )
             )
-          )
+            continue
+          }
+
+          // အောက်ပါအပိုင်းသည် ဖုန်းထဲကို အသစ်ရောက်လာသည့် ဗီဒီယိုအသစ်များအတွက်သာ စတင်အလုပ်လုပ်ပါသည်
+          if (File(path).exists()) {
+            var duration = c.getLong(durCol)
+
+            if (duration <= 0) {
+              try {
+                duration = noxtanEngine.ffmpegGetDuration(path)
+              } catch (e: Exception) {
+                duration = 0L
+              }
+            }
+
+            val w = c.getInt(wCol)
+            val h = c.getInt(hCol)
+            var resolutionStr = "${w}x${h}"
+
+            if (w <= 0 || h <= 0) {
+              runCatching {
+                val ffmpegRes = noxtanEngine.ffmpegGetResolution(path)
+                if (ffmpegRes != "0x0") resolutionStr = ffmpegRes
+              }
+            }
+
+            videoList.add(
+              VideoEntity(
+                id = c.getLong(idCol),
+                title = c.getString(nameCol) ?: "Unknown",
+                path = path,
+                duration = duration,
+                size = c.getLong(sizeCol),
+                dateAdded = c.getLong(dateCol),
+                mimeType = c.getString(mimeCol) ?: "video/mp4",
+                resolution = resolutionStr,
+                lastPlayedPosition = historyMap[path] ?: 0L,
+                lastPlayedTimestamp = 0L,
+                thumbnailPath = thumbMap[path]
+              )
+            )
+          }
         }
       }
     }
