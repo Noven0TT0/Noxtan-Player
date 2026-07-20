@@ -1,4 +1,4 @@
-# Noxtan Player
+# <img alt="app icon" src=".github/assets/app_icon.svg" width="48" /> Noxtan Player
 
 [![Downloads](https://img.shields.io/github/downloads/Noven0TT0/Noxtan-Player/total?style=flat-square&color=blue)](https://github.com/Noven0TT0/Noxtan-Player/releases)
 
@@ -13,6 +13,12 @@ A beautiful, cinematic, and modern media player for Android based on [mpv-androi
 * **Gesture Controls:** Intuitive vertical swipes for volume/brightness, horizontal swipes for seek, and double-taps.
 * **Enhanced Playback History:** Remembers your position, subtitle tracks, and playback speed for each video.
 * **Sleep Timer:** Set a timer to automatically pause playback.
+
+## Showcase
+
+<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.jpg" width="24%" /> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.png" width="24%" /> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US.png" width="24%"> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/4_en-US.png" width="24%" />
+<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/5_en-US.png" width="49%" /> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/6_en-US.png" width="49%" />
+<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/7_en-US.png" width="49%" /> <img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/8_en-US.png" width="49%" />
 
 ## Installation
 You can download the latest APK from the [Releases](https://github.com/Noven0TT0/Noxtan-Player/releases) page.
