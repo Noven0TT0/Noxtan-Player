@@ -248,7 +248,7 @@ object HomeScreen : Screen {
     val gridState = rememberLazyGridState()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
       state = rememberTopAppBarState(),
-      snapAnimationSpec = null // Snapping (အတင်းဆွဲကပ်ခြင်း) ကို ပိတ်လိုက်ပြီး ကြိုက်တဲ့နေရာမှာ ရပ်ခွင့်ပြုသည်
+      snapAnimationSpec = null
     )
 
     val nestedScrollConnection = remember(gridState) {
@@ -345,16 +345,15 @@ object HomeScreen : Screen {
             modifier = Modifier
               .fillMaxSize()
               .verticalScroll(rememberScrollState())
-              .padding(padding) // Top Bar ၏နောက်ကွယ်သို့ ရောက်မသွားစေရန် အောက်သို့ တွန်းချလိုက်ပါသည်
+              .padding(padding)
               .padding(32.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
           ) {
-            // App Logo
             androidx.compose.material3.Surface(
               modifier = Modifier.size(200.dp),
-              color = androidx.compose.ui.graphics.Color.Transparent, // ဘောင်အရောင်ကို ဖျောက်လိုက်ပါသည်
-              tonalElevation = 0.dp                                  // Shadow ကို ဖျောက်လိုက်ပါသည်
+              color = androidx.compose.ui.graphics.Color.Transparent,
+              tonalElevation = 0.dp
             ) {
               Box(
                 modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -401,7 +400,6 @@ object HomeScreen : Screen {
 
             Spacer(modifier = Modifier.height(48.dp))
 
-            // Open Source Link
             Row(
               verticalAlignment = Alignment.CenterVertically,
               modifier = Modifier
@@ -581,7 +579,6 @@ object HomeScreen : Screen {
                 }
               }
             } else {
-              // Color Object အသစ်တွေ အကြိမ်ကြိမ်မဆောက်အောင် LazyVerticalGrid အပြင်မှာ တစ်ကြိမ်တည်း ကြိုတင်သတ်မှတ်ထားပါသည်
               val selectedBgColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f)
               val itemBgColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)
 
@@ -617,7 +614,7 @@ object HomeScreen : Screen {
                         }
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(16.dp))
-                        .background(if (isSelected) selectedBgColor else Color.Transparent) // Pre-allocated Color အား သုံးထားပါသည်
+                        .background(if (isSelected) selectedBgColor else Color.Transparent)
                         .combinedClickable(
                           onClickLabel = if (isSelectionMode) selectActionLabel else openActionLabel,
                           onLongClickLabel = selectActionLabel,
@@ -642,7 +639,7 @@ object HomeScreen : Screen {
                         modifier = Modifier
                           .size(56.dp)
                           .clip(RoundedCornerShape(16.dp))
-                          .background(itemBgColor), // Pre-allocated Color အား သုံးထားပါသည်
+                          .background(itemBgColor),
                         contentAlignment = Alignment.Center
                       ) {
                         Icon(

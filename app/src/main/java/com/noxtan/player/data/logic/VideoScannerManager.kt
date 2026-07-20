@@ -23,12 +23,11 @@ class VideoScannerManager(
     try {
       withContext(Dispatchers.IO) {
         val existingVideos = videoDao.getAllVideosList()
-        val existingMap = existingVideos.associateBy { it.path } // Path ကို Key သုံးပြီး Map ဆောက်လိုက်ပါသည်
+        val existingMap = existingVideos.associateBy { it.path }
         val thumbMap = existingVideos.associate { it.path to it.thumbnailPath }
         val historyMap = existingVideos.associate { it.path to it.lastPlayedPosition }
         val timestampMap = existingVideos.associate { it.path to it.lastPlayedTimestamp }
 
-        // mediaScanner ထဲကို existingMap ပါ လှမ်းပို့ပေးလိုက်ပါသည်
         val videoList = mediaScanner.scanVideos(existingMap, historyMap, thumbMap).map { video ->
           video.copy(lastPlayedTimestamp = timestampMap[video.path] ?: 0L)
         }

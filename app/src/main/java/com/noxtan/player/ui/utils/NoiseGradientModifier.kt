@@ -9,23 +9,16 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
-/**
- * Highly Optimized Gradient Fade Modifier.
- * If the device is detected as low-end/entry-level, it bypasses drawing completely
- * and returns a plain Modifier to eliminate rendering overhead.
- */
 fun Modifier.topAndBottomNoise(
-  noiseAlpha: Float = 0.12f, // Kept for compiler/API compatibility
+  noiseAlpha: Float = 0.12f,
   fadeFraction: Float = 0.09f,
   edgeDarkenAlpha: Float = 1f,
   fadeColor: Color = Color.Unspecified
 ): Modifier = composed {
   val context = LocalContext.current
 
-  // App ထဲမှာရှိပြီးသား DevicePerformanceHelper ကို သုံးပြီး ဖုန်းအခြေအနေကို စစ်ဆေးပါတယ်။
   val isLowEnd = remember(context) { DevicePerformanceHelper.isLowEndDevice(context) }
 
-  // entry-level ဖုန်း ဖြစ်နေရင် drawing logic တွေကို လုံးဝမလုပ်တော့ဘဲ plain modifier အတိုင်းပဲ ချက်ချင်း return ပြန်ပါတယ်။
   if (isLowEnd) {
     return@composed this
   }

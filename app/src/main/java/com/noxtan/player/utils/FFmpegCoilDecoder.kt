@@ -31,7 +31,6 @@ class FFmpegCoilDecoder(
       val thumbDir = File(context.filesDir, "thumbnails").apply { if (!exists()) mkdirs() }
       val thumbFile = File(thumbDir, "cached_${videoPath.hashCode()}.jpg")
 
-      // ၁။ Cached ဖိုင်ရှိပြီးသားဆိုရင် တိုက်ရိုက်ဆွဲပြမယ် (အမြန်ဆုံးဖြစ်ပါတယ်)
       if (thumbFile.exists() && thumbFile.length() > 0) {
         val cachedBitmap = android.graphics.BitmapFactory.decodeFile(thumbFile.absolutePath)
         if (cachedBitmap != null) {
@@ -46,7 +45,6 @@ class FFmpegCoilDecoder(
       val targetWidth = 320
       val targetHeight = 180
 
-      // ၂။ ပထမဦးစားပေး - Custom C++ FFmpeg Engine (NoxtanEngine) နဲ့ အရင်စမ်းထုတ်မယ်
       try {
         if (NoxtanEngine.isAvailable) {
           val noxtanEngine = NoxtanEngine()
@@ -69,7 +67,6 @@ class FFmpegCoilDecoder(
         e.printStackTrace()
       }
 
-      // ၃။ ဒုတိယဦးစားပေး (Fail-safe) - Custom FFmpeg မအောင်မြင်ရင် Built-in MediaMetadataRetriever (Downscaled) နဲ့ အစားထိုးထုတ်ယူမယ်
       if (finalBitmap == null) {
         try {
           val retriever = android.media.MediaMetadataRetriever()
@@ -79,7 +76,6 @@ class FFmpegCoilDecoder(
           val isLowEnd = activityManager.isLowRamDevice
           val syncOption = if (isLowEnd) android.media.MediaMetadataRetriever.OPTION_PREVIOUS_SYNC else android.media.MediaMetadataRetriever.OPTION_CLOSEST_SYNC
 
-          // Android 8.1+ ဆိုရင် RAM အသုံးမများအောင် 320x180 ကို ကြိုပြီး Scale ချပြီးမှ Frame ထုတ်ယူပါတယ်
           val rawBitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
             retriever.getScaledFrameAtTime(1000000L, syncOption, targetWidth, targetHeight)
           } else {
@@ -105,7 +101,6 @@ class FFmpegCoilDecoder(
         }
       }
 
-      // ၄။ ရရှိလာတဲ့ Bitmap ကို JPEG အဖြစ် Cache သိမ်းပြီး ဆွဲပြခိုင်းပါမယ်
       finalBitmap?.let { bitmap ->
         try {
           FileOutputStream(thumbFile).use { out ->
@@ -126,8 +121,6 @@ class FFmpegCoilDecoder(
   }
 
   companion object {
-    // limitParallelism အစား Coroutines ဗားရှင်းအားလုံးနဲ့ အပြည့်အဝကိုက်ညီတဲ့ Mutex (Mutual Exclusion Lock) ကို သုံးပြီး
-    // Thumbnail တွေကို တစ်ကြိမ်မှာ ၁ ခုစီ စနစ်တကျ အလှည့်ကျ (Sequential) ထုတ်ယူရန် ထိန်းချုပ်ပေးပါတယ်။
     private val thumbnailMutex = Mutex()
   }
 

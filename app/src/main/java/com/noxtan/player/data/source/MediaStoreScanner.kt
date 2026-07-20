@@ -14,7 +14,7 @@ class MediaStoreScanner(
 ) {
 
   fun scanVideos(
-    existingMap: Map<String, VideoEntity>, // စကင်ဖတ်ပြီးသား Video စာရင်းကို လက်ခံရယူပါသည်
+    existingMap: Map<String, VideoEntity>,
     historyMap: Map<String, Long>,
     thumbMap: Map<String, String?>
   ): List<VideoEntity> {
@@ -60,7 +60,6 @@ class MediaStoreScanner(
         val path = c.getString(pathCol) ?: ""
         if (path.isNotBlank()) {
 
-          // အကယ်၍ အရင်က စကင်ဖတ်ပြီးသား ဗီဒီယိုဖြစ်နေရင် File exist check ရော Heavy C++ FFmpeg parsing ရော မလုပ်တော့ဘဲ Bypass လုပ်ပါသည်
           val existing = existingMap[path]
           if (existing != null) {
             videoList.add(
@@ -73,7 +72,6 @@ class MediaStoreScanner(
             continue
           }
 
-          // အောက်ပါအပိုင်းသည် ဖုန်းထဲကို အသစ်ရောက်လာသည့် ဗီဒီယိုအသစ်များအတွက်သာ စတင်အလုပ်လုပ်ပါသည်
           if (File(path).exists()) {
             var duration = c.getLong(durCol)
 

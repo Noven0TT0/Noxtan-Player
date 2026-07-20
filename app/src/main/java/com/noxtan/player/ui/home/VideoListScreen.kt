@@ -53,7 +53,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -275,7 +274,7 @@ data class VideoListScreen(
     val gridState = rememberLazyGridState()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
       state = rememberTopAppBarState(),
-      snapAnimationSpec = null // ကြိုက်တဲ့နေရာမှာ ရပ်ခွင့်ပြုပြီး UI Junk ဖြစ်ခြင်းကို သက်သာစေသည်
+      snapAnimationSpec = null
     )
 
     val nestedScrollConnection = remember(gridState) {
@@ -958,7 +957,7 @@ data class VideoListScreen(
                     else Modifier
                   )
                   .padding(12.dp)
-                  .graphicsLayer { alpha = if (isAllowed) 1f else 0.4f }, // GPU-accelerated graphics layer ဖြင့် အစားထိုးလိုက်ပါသည်
+                  .graphicsLayer { alpha = if (isAllowed) 1f else 0.4f },
                 verticalAlignment = Alignment.CenterVertically
               ) {
                 Box(

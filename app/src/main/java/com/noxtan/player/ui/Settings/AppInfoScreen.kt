@@ -111,8 +111,8 @@ object AboutScreen : Screen {
         ) {
           Surface(
             modifier = Modifier.size(150.dp),
-            color = androidx.compose.ui.graphics.Color.Transparent, // ဘောင်အရောင်ကို ဖျောက်လိုက်ပါသည်
-            tonalElevation = 0.dp                                  // Shadow ကို ဖျောက်လိုက်ပါသည်
+            color = androidx.compose.ui.graphics.Color.Transparent,
+            tonalElevation = 0.dp
           ) {
             Box(
               modifier = Modifier.fillMaxSize().padding(16.dp),
