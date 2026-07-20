@@ -463,6 +463,12 @@ object HomeScreen : Screen {
                 items(searchResults, key = { it.id }) { video ->
                   val isRecent = video.id == recentVideo?.id
 
+                  val titleColor = when {
+                    isRecent -> MaterialTheme.colorScheme.primary
+                    video.markState == "PLAYED" -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                    else -> MaterialTheme.colorScheme.onSurface
+                  }
+
                   val videoDesc = stringResource(R.string.a11y_video_desc, video.title, formatDuration(video.duration))
                   Row(
                     modifier = Modifier
@@ -493,15 +499,25 @@ object HomeScreen : Screen {
                         contentScale = ContentScale.Crop,
                         modifier = Modifier.fillMaxSize()
                       )
-                      Text(
-                        text = formatDuration(video.duration),
-                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
-                        color = Color.White,
-                        modifier = Modifier
-                          .padding(6.dp)
-                          .background(Color.Black.copy(alpha = 0.65f), RoundedCornerShape(6.dp))
-                          .padding(horizontal = 6.dp, vertical = 2.dp)
-                      )
+
+                      if (video.markState == "NEW") {
+                        Text(
+                          text = "NEW",
+                          color = MaterialTheme.colorScheme.onPrimary,
+                          style = MaterialTheme.typography.labelSmall.copy(
+                            fontWeight = FontWeight.ExtraBold,
+                            fontSize = 10.sp,
+                            letterSpacing = 0.5.sp
+                          ),
+                          modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .background(
+                              color = MaterialTheme.colorScheme.primary,
+                              shape = RoundedCornerShape(bottomEnd = 12.dp)
+                            )
+                            .padding(horizontal = 8.dp, vertical = 4.dp)
+                        )
+                      }
                     }
 
                     Spacer(modifier = Modifier.width(16.dp))
@@ -510,7 +526,7 @@ object HomeScreen : Screen {
                       Text(
                         text = video.title,
                         style = MaterialTheme.typography.titleMedium,
-                        color = if (isRecent) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
+                        color = titleColor,
                         fontWeight = FontWeight.Bold,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
@@ -600,155 +616,203 @@ object HomeScreen : Screen {
                   val isRecentFolder = recentVideoParent == folder.path
                   val isSelected = selectedPaths.contains(folder.path)
 
-                  val folderDesc = stringResource(R.string.a11y_folder_desc, folder.name, folder.videoCount)
+                  val baseFolderDesc = stringResource(R.string.a11y_folder_desc, folder.name, folder.videoCount)
+                  val folderDesc = if (folder.hasNewVideos) {
+                    "$baseFolderDesc, ${stringResource(R.string.a11y_folder_has_new_videos)}"
+                  } else {
+                    baseFolderDesc
+                  }
+
                   val selectActionLabel = stringResource(R.string.a11y_action_select)
                   val openActionLabel = stringResource(R.string.a11y_action_open_folder)
                   val stateDesc = if (isSelectionMode) stringResource(if (isSelected) R.string.a11y_selected else R.string.a11y_not_selected) else null
 
                   if (viewConfig.gridCount == 1) {
-                    Row(
-                      modifier = Modifier
-                        .clearAndSetSemantics {
-                          contentDescription = folderDesc
-                          if (stateDesc != null) stateDescription = stateDesc
-                        }
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(if (isSelected) selectedBgColor else Color.Transparent)
-                        .combinedClickable(
-                          onClickLabel = if (isSelectionMode) selectActionLabel else openActionLabel,
-                          onLongClickLabel = selectActionLabel,
-                          onClick = {
-                            if (isSelectionMode) {
-                              viewModel.toggleSelection(folder.path)
-                            } else {
-                              viewModel.onSearchQueryChanged("")
-                              isSearchActive = false
-                              viewModel.updateCurrentFolder(folder.path)
-                              backstack.add(VideoListScreen(folder.path, folder.name))
-                            }
-                          },
-                          onLongClick = {
-                            viewModel.toggleSelection(folder.path)
-                          }
-                        )
-                        .padding(12.dp),
-                      verticalAlignment = Alignment.CenterVertically
-                    ) {
-                      Box(
+                    Box(modifier = Modifier.fillMaxWidth()) {
+                      Row(
                         modifier = Modifier
-                          .size(56.dp)
+                          .clearAndSetSemantics {
+                            contentDescription = folderDesc
+                            if (stateDesc != null) stateDescription = stateDesc
+                          }
+                          .fillMaxWidth()
                           .clip(RoundedCornerShape(16.dp))
-                          .background(itemBgColor),
-                        contentAlignment = Alignment.Center
+                          .background(if (isSelected) selectedBgColor else Color.Transparent)
+                          .combinedClickable(
+                            onClickLabel = if (isSelectionMode) selectActionLabel else openActionLabel,
+                            onLongClickLabel = selectActionLabel,
+                            onClick = {
+                              if (isSelectionMode) {
+                                viewModel.toggleSelection(folder.path)
+                              } else {
+                                viewModel.onSearchQueryChanged("")
+                                isSearchActive = false
+                                viewModel.updateCurrentFolder(folder.path)
+                                backstack.add(VideoListScreen(folder.path, folder.name))
+                              }
+                            },
+                            onLongClick = {
+                              viewModel.toggleSelection(folder.path)
+                            }
+                          )
+                          .padding(12.dp),
+                        verticalAlignment = Alignment.CenterVertically
                       ) {
-                        Icon(
-                          imageVector = Icons.Rounded.FolderOpen,
-                          contentDescription = null,
-                          modifier = Modifier.size(28.dp),
-                          tint = MaterialTheme.colorScheme.primary
-                        )
-                        if (isSelected) {
+                        Box(
+                          modifier = Modifier
+                            .size(56.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(itemBgColor),
+                          contentAlignment = Alignment.Center
+                        ) {
                           Icon(
-                            imageVector = Icons.Rounded.CheckCircle,
-                            contentDescription = "Selected",
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier
-                              .align(Alignment.BottomEnd)
-                              .size(20.dp)
-                              .background(MaterialTheme.colorScheme.background, CircleShape)
+                            imageVector = Icons.Rounded.FolderOpen,
+                            contentDescription = null,
+                            modifier = Modifier.size(28.dp),
+                            tint = MaterialTheme.colorScheme.primary
+                          )
+                          if (isSelected) {
+                            Icon(
+                              imageVector = Icons.Rounded.CheckCircle,
+                              contentDescription = "Selected",
+                              tint = MaterialTheme.colorScheme.primary,
+                              modifier = Modifier
+                                .align(Alignment.BottomEnd)
+                                .size(20.dp)
+                                .background(MaterialTheme.colorScheme.background, CircleShape)
+                            )
+                          }
+                        }
+
+                        Spacer(modifier = Modifier.width(16.dp))
+
+                        Column(modifier = Modifier.weight(1f)) {
+                          Text(
+                            text = folder.name,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = if (isRecentFolder) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                          )
+                          Spacer(modifier = Modifier.height(2.dp))
+                          Text(
+                            text = "${folder.videoCount} videos",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontWeight = FontWeight.Medium
                           )
                         }
+
+                        Icon(
+                          imageVector = Icons.Rounded.ChevronRight,
+                          contentDescription = null,
+                          tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
+                          modifier = Modifier.size(24.dp)
+                        )
                       }
 
-                      Spacer(modifier = Modifier.width(16.dp))
-
-                      Column(modifier = Modifier.weight(1f)) {
+                      if (folder.hasNewVideos) {
+                        Text(
+                          text = "NEW",
+                          color = MaterialTheme.colorScheme.onPrimary,
+                          style = MaterialTheme.typography.labelSmall.copy(
+                            fontWeight = FontWeight.ExtraBold,
+                            fontSize = 9.sp,
+                            letterSpacing = 0.5.sp
+                          ),
+                          modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .background(
+                              color = MaterialTheme.colorScheme.primary,
+                              shape = RoundedCornerShape(bottomEnd = 12.dp)
+                            )
+                            .padding(horizontal = 7.dp, vertical = 3.dp)
+                        )
+                      }
+                    }
+                  } else {
+                    Box(modifier = Modifier.fillMaxWidth()) {
+                      Column(
+                        modifier = Modifier
+                          .clearAndSetSemantics {
+                            contentDescription = folderDesc
+                            if (stateDesc != null) stateDescription = stateDesc
+                          }
+                          .fillMaxWidth()
+                          .clip(RoundedCornerShape(16.dp))
+                          .background(if (isSelected) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f) else Color.Transparent)
+                          .combinedClickable(
+                            onClickLabel = if (isSelectionMode) selectActionLabel else openActionLabel,
+                            onLongClickLabel = selectActionLabel,
+                            onClick = {
+                              if (isSelectionMode) {
+                                viewModel.toggleSelection(folder.path)
+                              } else {
+                                viewModel.onSearchQueryChanged("")
+                                isSearchActive = false
+                                viewModel.updateCurrentFolder(folder.path)
+                                backstack.add(VideoListScreen(folder.path, folder.name))
+                              }
+                            },
+                            onLongClick = {
+                              viewModel.toggleSelection(folder.path)
+                            }
+                          )
+                          .padding(12.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                      ) {
+                        Box(
+                          modifier = Modifier
+                            .size(72.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)),
+                          contentAlignment = Alignment.Center
+                        ) {
+                          Icon(Icons.Rounded.FolderOpen, contentDescription = null, modifier = Modifier.size(36.dp), tint = MaterialTheme.colorScheme.primary)
+                          if (isSelected) {
+                            Icon(
+                              imageVector = Icons.Rounded.CheckCircle,
+                              contentDescription = "Selected",
+                              tint = MaterialTheme.colorScheme.primary,
+                              modifier = Modifier
+                                .align(Alignment.BottomEnd)
+                                .size(24.dp)
+                                .background(MaterialTheme.colorScheme.background, CircleShape)
+                            )
+                          }
+                        }
+                        Spacer(modifier = Modifier.height(12.dp))
                         Text(
                           text = folder.name,
                           style = MaterialTheme.typography.titleMedium,
-                          fontWeight = FontWeight.Bold,
                           color = if (isRecentFolder) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground,
+                          fontWeight = FontWeight.Bold,
                           maxLines = 1,
                           overflow = TextOverflow.Ellipsis
                         )
-                        Spacer(modifier = Modifier.height(2.dp))
-                        Text(
-                          text = "${folder.videoCount} videos",
-                          style = MaterialTheme.typography.bodySmall,
-                          color = MaterialTheme.colorScheme.onSurfaceVariant,
-                          fontWeight = FontWeight.Medium
-                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(text = "${folder.videoCount} videos", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                       }
 
-                      Icon(
-                        imageVector = Icons.Rounded.ChevronRight,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
-                        modifier = Modifier.size(24.dp)
-                      )
-                    }
-                  } else {
-                    Column(
-                      modifier = Modifier
-                        .clearAndSetSemantics {
-                          contentDescription = folderDesc
-                          if (stateDesc != null) stateDescription = stateDesc
-                        }
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(if (isSelected) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f) else Color.Transparent)
-                        .combinedClickable(
-                          onClickLabel = if (isSelectionMode) selectActionLabel else openActionLabel,
-                          onLongClickLabel = selectActionLabel,
-                          onClick = {
-                            if (isSelectionMode) {
-                              viewModel.toggleSelection(folder.path)
-                            } else {
-                              viewModel.onSearchQueryChanged("")
-                              isSearchActive = false
-                              viewModel.updateCurrentFolder(folder.path)
-                              backstack.add(VideoListScreen(folder.path, folder.name))
-                            }
-                          },
-                          onLongClick = {
-                            viewModel.toggleSelection(folder.path)
-                          }
+                      if (folder.hasNewVideos) {
+                        Text(
+                          text = "NEW",
+                          color = MaterialTheme.colorScheme.onPrimary,
+                          style = MaterialTheme.typography.labelSmall.copy(
+                            fontWeight = FontWeight.ExtraBold,
+                            fontSize = 9.sp,
+                            letterSpacing = 0.5.sp
+                          ),
+                          modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .background(
+                              color = MaterialTheme.colorScheme.primary,
+                              shape = RoundedCornerShape(bottomEnd = 12.dp)
+                            )
+                            .padding(horizontal = 7.dp, vertical = 3.dp)
                         )
-                        .padding(12.dp),
-                      horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                      Box(
-                        modifier = Modifier
-                          .size(72.dp)
-                          .clip(RoundedCornerShape(16.dp))
-                          .background(MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)),
-                        contentAlignment = Alignment.Center
-                      ) {
-                        Icon(Icons.Rounded.FolderOpen, contentDescription = null, modifier = Modifier.size(36.dp), tint = MaterialTheme.colorScheme.primary)
-                        if (isSelected) {
-                          Icon(
-                            imageVector = Icons.Rounded.CheckCircle,
-                            contentDescription = "Selected",
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier
-                              .align(Alignment.BottomEnd)
-                              .size(24.dp)
-                              .background(MaterialTheme.colorScheme.background, CircleShape)
-                          )
-                        }
                       }
-                      Spacer(modifier = Modifier.height(12.dp))
-                      Text(
-                        text = folder.name,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = if (isRecentFolder) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground,
-                        fontWeight = FontWeight.Bold,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                      )
-                      Spacer(modifier = Modifier.height(4.dp))
-                      Text(text = "${folder.videoCount} videos", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                   }
                 }
@@ -767,6 +831,9 @@ object HomeScreen : Screen {
               shareVideos(context, videosToShare)
               viewModel.clearSelection()
             }
+          },
+          onMarkAsSelected = { state ->
+            viewModel.markSelectedVideosAs(state.name, isFolderMode = true)
           },
           onRenameClick = {},
           onMoveClick = {},

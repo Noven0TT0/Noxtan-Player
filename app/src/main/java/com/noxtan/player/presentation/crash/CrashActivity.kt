@@ -182,7 +182,6 @@ class CrashActivity : ComponentActivity() {
         .padding(horizontal = 24.dp, vertical = 32.dp),
       horizontalAlignment = Alignment.CenterHorizontally
     ) {
-      // --- Error Icon ---
       Box(
         modifier = Modifier
           .padding(top = 24.dp)
@@ -201,7 +200,6 @@ class CrashActivity : ComponentActivity() {
 
       Spacer(modifier = Modifier.height(24.dp))
 
-      // --- Friendly Title & Subtitle ---
       Text(
         text = "Oops! Something went wrong.",
         style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
@@ -218,7 +216,6 @@ class CrashActivity : ComponentActivity() {
 
       Spacer(modifier = Modifier.height(24.dp))
 
-      // --- Exception Details Box ---
       Box(
         modifier = Modifier
           .weight(1f)
@@ -241,7 +238,6 @@ class CrashActivity : ComponentActivity() {
 
       Spacer(modifier = Modifier.height(24.dp))
 
-      // --- Action Buttons ---
       Button(
         onClick = {
           scope.launch(Dispatchers.IO) {

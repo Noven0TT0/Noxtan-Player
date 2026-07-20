@@ -390,6 +390,12 @@ data class VideoListScreen(
             items(videos, key = { it.id }) { video ->
               val isRecent = video.id == recentVideo?.id
 
+              val titleColor = when {
+                isRecent -> MaterialTheme.colorScheme.primary
+                video.markState == "PLAYED" -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                else -> MaterialTheme.colorScheme.onSurface
+              }
+
               val videoDesc = stringResource(R.string.a11y_video_desc, video.title, formatDuration(video.duration))
               val selectActionLabel = stringResource(R.string.a11y_action_select)
               val playActionLabel = stringResource(R.string.a11y_action_play)
@@ -437,15 +443,22 @@ data class VideoListScreen(
                       contentScale = ContentScale.Crop,
                       modifier = Modifier.fillMaxSize()
                     )
-                    if (viewConfig.showDuration) {
+                    if (video.markState == "NEW") {
                       Text(
-                        text = formatDuration(video.duration),
-                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
-                        color = Color.White,
+                        text = "NEW",
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        style = MaterialTheme.typography.labelSmall.copy(
+                          fontWeight = FontWeight.ExtraBold,
+                          fontSize = 10.sp,
+                          letterSpacing = 0.5.sp
+                        ),
                         modifier = Modifier
-                          .padding(6.dp)
-                          .background(Color.Black.copy(alpha = 0.65f), RoundedCornerShape(6.dp))
-                          .padding(horizontal = 6.dp, vertical = 2.dp)
+                          .align(Alignment.TopStart)
+                          .background(
+                            color = MaterialTheme.colorScheme.primary,
+                            shape = RoundedCornerShape(bottomEnd = 12.dp)
+                          )
+                          .padding(horizontal = 8.dp, vertical = 4.dp)
                       )
                     }
                   }
@@ -456,7 +469,7 @@ data class VideoListScreen(
                     Text(
                       text = video.title,
                       style = MaterialTheme.typography.titleMedium,
-                      color = if (isRecent) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
+                      color = titleColor,
                       fontWeight = FontWeight.Bold,
                       maxLines = 2,
                       overflow = TextOverflow.Ellipsis,
@@ -551,6 +564,24 @@ data class VideoListScreen(
                       contentScale = ContentScale.Crop,
                       modifier = Modifier.fillMaxSize()
                     )
+                    if (video.markState == "NEW") {
+                      Text(
+                        text = "NEW",
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        style = MaterialTheme.typography.labelSmall.copy(
+                          fontWeight = FontWeight.ExtraBold,
+                          fontSize = 10.sp,
+                          letterSpacing = 0.5.sp
+                        ),
+                        modifier = Modifier
+                          .align(Alignment.TopStart)
+                          .background(
+                            color = MaterialTheme.colorScheme.primary,
+                            shape = RoundedCornerShape(bottomEnd = 12.dp)
+                          )
+                          .padding(horizontal = 8.dp, vertical = 4.dp)
+                      )
+                    }
                     if (viewConfig.showDuration) {
                       Text(
                         text = formatDuration(video.duration),
@@ -579,7 +610,7 @@ data class VideoListScreen(
                   Text(
                     text = video.title,
                     style = MaterialTheme.typography.titleMedium,
-                    color = if (isRecent) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
+                    color = titleColor,
                     fontWeight = FontWeight.Bold,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
@@ -649,6 +680,9 @@ data class VideoListScreen(
               shareVideos(context, videosToShare)
               viewModel.clearSelection()
             }
+          },
+          onMarkAsSelected = { state ->
+            viewModel.markSelectedVideosAs(state.name, isFolderMode = false)
           },
           onRenameClick = {
             val targetVideo = videos.find { it.path == selectedPaths.first() }

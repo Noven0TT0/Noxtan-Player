@@ -363,6 +363,12 @@
     <string name="a11y_move">Move</string>
     <string name="a11y_info">Information</string>
     <string name="a11y_delete">Delete</string>
+    <string name="a11y_mark_as">Mark as…</string>
+    <string name="mark_as_new">New</string>
+    <string name="mark_as_played">Played</string>
+    <string name="mark_as_unplayed">Unplayed</string>
+    <string name="mark_as_none">None</string>
+    <string name="a11y_folder_has_new_videos">has new videos</string>
     <string name="a11y_resume_recent">Resume recent video</string>
 
     <string name="a11y_action_pause">Pause</string>

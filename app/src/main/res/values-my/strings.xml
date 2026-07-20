@@ -363,6 +363,12 @@
     <string name="a11y_move">နေရာရွှေ့ရန်</string>
     <string name="a11y_info">အချက်အလက်များ ကြည့်ရန်</string>
     <string name="a11y_delete">ဖျက်မည်</string>
+    <string name="a11y_mark_as">အခြေအနေ သတ်မှတ်ရန်</string>
+    <string name="mark_as_new">အသစ်</string>
+    <string name="mark_as_played">ကြည့်ပြီး</string>
+    <string name="mark_as_unplayed">မကြည့်ရသေး</string>
+    <string name="mark_as_none">ဘာမှမသတ်မှတ်ပါ</string>
+    <string name="a11y_folder_has_new_videos">ဗီဒီယိုအသစ်များ ရှိပါသည်</string>
     <string name="a11y_resume_recent">နောက်ဆုံးကြည့်ခဲ့သည့် ဗီဒီယိုကို ဆက်ဖွင့်မည်</string>
 
     <string name="a11y_action_pause">ရပ်မည်</string>

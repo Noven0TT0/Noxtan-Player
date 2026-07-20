@@ -23,7 +23,7 @@ interface VideoDao {
   @Query("SELECT * FROM videos WHERE title LIKE '%' || :query || '%'")
   fun searchVideos(query: String): Flow<List<VideoEntity>>
 
-  @Query("UPDATE videos SET lastPlayedPosition = :position WHERE path = :path")
+  @Query("UPDATE videos SET lastPlayedPosition = :position, markState = CASE WHEN markState = 'NEW' THEN 'NONE' ELSE markState END WHERE path = :path")
   suspend fun updatePlaybackPosition(path: String, position: Long)
 
   @Query("SELECT lastPlayedPosition FROM videos WHERE path = :path")
@@ -38,7 +38,7 @@ interface VideoDao {
   @Query("SELECT * FROM videos WHERE path LIKE :folderPath || '/%' AND lastPlayedTimestamp > 0 ORDER BY lastPlayedTimestamp DESC LIMIT 1")
   fun getRecentVideoInFolder(folderPath: String): Flow<VideoEntity?>
 
-  @Query("UPDATE videos SET lastPlayedPosition = :position, lastPlayedTimestamp = :timestamp WHERE path = :path")
+  @Query("UPDATE videos SET lastPlayedPosition = :position, lastPlayedTimestamp = :timestamp, markState = CASE WHEN markState = 'NEW' THEN 'NONE' ELSE markState END WHERE path = :path")
   suspend fun updatePlaybackStatus(path: String, position: Long, timestamp: Long)
 
   @Query("DELETE FROM videos WHERE path IN (:paths)")
@@ -46,4 +46,10 @@ interface VideoDao {
 
   @Query("UPDATE videos SET lastPlayedPosition = 0, lastPlayedTimestamp = 0")
   suspend fun clearAllPlaybackHistory()
+
+  @Query("UPDATE videos SET markState = :state WHERE path IN (:paths)")
+  suspend fun updateMarkState(paths: List<String>, state: String)
+
+  @Query("UPDATE videos SET markState = :state, lastPlayedPosition = 0, lastPlayedTimestamp = 0 WHERE path IN (:paths)")
+  suspend fun updateMarkStateAndResetProgress(paths: List<String>, state: String)
 }

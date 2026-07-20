@@ -16,7 +16,8 @@ class MediaStoreScanner(
   fun scanVideos(
     existingMap: Map<String, VideoEntity>,
     historyMap: Map<String, Long>,
-    thumbMap: Map<String, String?>
+    thumbMap: Map<String, String?>,
+    isFirstScan: Boolean
   ): List<VideoEntity> {
     val videoList = mutableListOf<VideoEntity>()
     val collection = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -94,6 +95,8 @@ class MediaStoreScanner(
               }
             }
 
+            val initialMarkState = if (isFirstScan) "NONE" else "NEW"
+
             videoList.add(
               VideoEntity(
                 id = c.getLong(idCol),
@@ -106,7 +109,8 @@ class MediaStoreScanner(
                 resolution = resolutionStr,
                 lastPlayedPosition = historyMap[path] ?: 0L,
                 lastPlayedTimestamp = 0L,
-                thumbnailPath = thumbMap[path]
+                thumbnailPath = thumbMap[path],
+                markState = initialMarkState
               )
             )
           }

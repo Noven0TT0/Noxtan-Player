@@ -15,5 +15,6 @@ data class VideoEntity(
   val resolution: String,
   val lastPlayedPosition: Long = 0L,
   val lastPlayedTimestamp: Long = 0L,
-  val thumbnailPath: String? = null
+  val thumbnailPath: String? = null,
+  val markState: String = "NONE"
 )

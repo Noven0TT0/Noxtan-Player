@@ -56,4 +56,12 @@ class VideoRepository(private val context: Context, private val database: Noxtan
   suspend fun generateMissingThumbnails(videos: List<com.noxtan.player.data.local.db.VideoEntity>) {
     thumbnailManager.generateMissing(videos)
   }
+
+  suspend fun updateMarkState(paths: List<String>, state: String) {
+    if (state == "UNPLAYED" || state == "NEW") {
+      videoDao.updateMarkStateAndResetProgress(paths, state)
+    } else {
+      videoDao.updateMarkState(paths, state)
+    }
+  }
 }

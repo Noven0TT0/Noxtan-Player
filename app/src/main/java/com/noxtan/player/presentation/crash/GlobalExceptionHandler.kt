@@ -1,4 +1,3 @@
-// com/noxtan/player/presentation/crash/GlobalExceptionHandler.kt
 package com.noxtan.player.presentation.crash
 
 import android.content.Context

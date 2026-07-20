@@ -121,7 +121,6 @@ private fun PreviewTintedSliderItemRed() {
 }
 
 fun generateSliderColors(baseColor: Color): SliderColors {
-  // Utility function to darken a color
   fun darken(color: Color, factor: Float): Color {
     val red = max((color.red * factor), 0f)
     val green = max((color.green * factor), 0f)
@@ -129,7 +128,6 @@ fun generateSliderColors(baseColor: Color): SliderColors {
     return Color(red, green, blue, color.alpha)
   }
 
-  // Utility function to lighten a color
   fun lighten(color: Color, factor: Float): Color {
     val red = min((color.red + (1 - color.red) * factor), 255f)
     val green = min((color.green + (1 - color.green) * factor), 255f)

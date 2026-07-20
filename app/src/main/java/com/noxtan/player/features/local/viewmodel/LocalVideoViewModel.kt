@@ -35,7 +35,8 @@ data class VideoFolder(
   val path: String,
   val videoCount: Int,
   val totalSize: Long = 0L,
-  val latestDate: Long = 0L
+  val latestDate: Long = 0L,
+  val hasNewVideos: Boolean = false
 )
 
 class LocalVideoViewModel(
@@ -156,7 +157,8 @@ class LocalVideoViewModel(
           path = path,
           videoCount = videoList.size,
           totalSize = videoList.sumOf { it.size },
-          latestDate = videoList.maxOfOrNull { it.dateAdded } ?: 0L
+          latestDate = videoList.maxOfOrNull { it.dateAdded } ?: 0L,
+          hasNewVideos = videoList.any { it.markState == "NEW" }
         )
       }
     val sorted = when (config.sortBy) {
@@ -312,5 +314,22 @@ class LocalVideoViewModel(
 
   fun stopThumbnailGeneration() {
     thumbnailJob?.cancel()
+  }
+
+  fun markSelectedVideosAs(state: String, isFolderMode: Boolean = false) {
+    viewModelScope.launch(Dispatchers.IO) {
+      val videosToUpdate = if (isFolderMode) {
+        getVideosInSelectedFolders()
+      } else {
+        _allVideos.value.filter { it.path in _selectedPaths.value }
+      }
+
+      val paths = videosToUpdate.map { it.path }
+      if (paths.isNotEmpty()) {
+        repository.updateMarkState(paths, state)
+        silentRefresh()
+      }
+      clearSelection()
+    }
   }
 }

@@ -22,7 +22,6 @@ class DecoderPreferences(preferenceStore: PreferenceStore) {
   val hueFilter = preferenceStore.getInt("filter_hue")
   val eyeCareBlueLight = preferenceStore.getBoolean("eye_care_blue_light", false)
   val eyeCareAntiGlare = preferenceStore.getBoolean("eye_care_anti_glare", false)
-  // val eyeCareHdrToSdr = preferenceStore.getBoolean("eye_care_hdr_to_sdr", false)
   val eyeCareAntiStrobe = preferenceStore.getBoolean("eye_care_anti_strobe", false)
   val eyeCareAutoDimming = preferenceStore.getBoolean("eye_care_auto_dimming", false)
   val eyeCareNightAudio = preferenceStore.getBoolean("eye_care_night_audio", false)

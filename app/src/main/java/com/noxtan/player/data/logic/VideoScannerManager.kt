@@ -23,12 +23,15 @@ class VideoScannerManager(
     try {
       withContext(Dispatchers.IO) {
         val existingVideos = videoDao.getAllVideosList()
+
+        val isFirstScan = existingVideos.isEmpty()
+
         val existingMap = existingVideos.associateBy { it.path }
         val thumbMap = existingVideos.associate { it.path to it.thumbnailPath }
         val historyMap = existingVideos.associate { it.path to it.lastPlayedPosition }
         val timestampMap = existingVideos.associate { it.path to it.lastPlayedTimestamp }
 
-        val videoList = mediaScanner.scanVideos(existingMap, historyMap, thumbMap).map { video ->
+        val videoList = mediaScanner.scanVideos(existingMap, historyMap, thumbMap, isFirstScan).map { video ->
           video.copy(lastPlayedTimestamp = timestampMap[video.path] ?: 0L)
         }
 
