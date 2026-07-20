@@ -1,1 +1,54 @@
-<svg id="vector" xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 24 24"><g transform="translation(0, 3.6)" id="g_0"><path fill="#37143F" d="M12,20A1,1 0,0 1,8 16L14,10A1,1 0,0 1,18 14Z"/><path fill="#693A72" d="M8,8A1,1 0,0 1,12 4L18,10A1,1 0,0 1,14 14Z"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="512" height="512">
+    <defs>
+        <!-- Animation & Styles -->
+        <style>
+            /* Subtle Wave Animation for the bars on hover. */
+            @keyframes wave-pulse {
+                0%, 100% { transform: scaleY(1); }
+                50% { transform: scaleY(1.08); }
+            }
+
+            /* The Proton Dot gets a glowing pulse */
+            @keyframes proton-glow {
+                0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(64, 224, 208, 0.6)); }
+                50% { transform: scale(1.15); filter: drop-shadow(0 0 20px rgba(64, 224, 208, 1)); }
+            }
+
+            .bar {
+                transform-origin: center;
+                transition: transform 0.3s ease;
+            }
+
+            /* Trigger animations when hovering over the SVG */
+            svg:hover .bar-1 { animation: wave-pulse 1.2s infinite ease-in-out 0.0s; }
+            svg:hover .bar-2 { animation: wave-pulse 1.2s infinite ease-in-out 0.1s; }
+            svg:hover .bar-3 { animation: wave-pulse 1.2s infinite ease-in-out 0.2s; }
+            svg:hover .bar-4 { animation: wave-pulse 1.2s infinite ease-in-out 0.3s; }
+            
+            .bar-5 {
+                transform-origin: 180px 128px; 
+                filter: drop-shadow(0 0 8px rgba(64, 224, 208, 0.4));
+                transition: transform 0.3s ease, filter 0.3s ease;
+            }
+
+            svg:hover .bar-5 {
+                animation: proton-glow 1.2s infinite ease-in-out 0.4s;
+            }
+        </style>
+        
+        <!-- Global Gradient -->
+        <linearGradient id="globalGrad" gradientUnits="userSpaceOnUse" x1="69" y1="0" x2="187" y2="0">
+            <stop offset="0%" stop-color="#7B57FF" />
+            <stop offset="100%" stop-color="#40E0D0" />
+        </linearGradient>
+    </defs>
+
+    <!-- Logo Shapes -->
+    <g>
+        <rect class="bar bar-1" x="69" y="64" width="14" height="128" rx="7" fill="url(#globalGrad)" />
+        <rect class="bar bar-2" x="95" y="78" width="14" height="100" rx="7" fill="url(#globalGrad)" />
+        <rect class="bar bar-3" x="121" y="92" width="14" height="72" rx="7" fill="url(#globalGrad)" />
+        <rect class="bar bar-4" x="147" y="106" width="14" height="44" rx="7" fill="url(#globalGrad)" />
+        <rect class="bar-5" x="173" y="121" width="14" height="14" rx="7" fill="#40E0D0" />
+    </g>
+</svg>
