@@ -443,6 +443,7 @@ data class VideoListScreen(
                       contentScale = ContentScale.Crop,
                       modifier = Modifier.fillMaxSize()
                     )
+
                     if (video.markState == "NEW") {
                       Text(
                         text = "NEW",
@@ -459,6 +460,18 @@ data class VideoListScreen(
                             shape = RoundedCornerShape(bottomEnd = 12.dp)
                           )
                           .padding(horizontal = 8.dp, vertical = 4.dp)
+                      )
+                    }
+
+                    if (viewConfig.showDuration) {
+                      Text(
+                        text = formatDuration(video.duration),
+                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
+                        color = Color.White,
+                        modifier = Modifier
+                          .padding(6.dp)
+                          .background(Color.Black.copy(alpha = 0.65f), RoundedCornerShape(6.dp))
+                          .padding(horizontal = 6.dp, vertical = 2.dp)
                       )
                     }
                   }

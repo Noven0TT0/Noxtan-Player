@@ -1,5 +1,7 @@
 # Noxtan Player
 
+[![Downloads](https://img.shields.io/github/downloads/Noven0TT0/Noxtan-Player/total?style=flat-square&color=blue)](https://github.com/Noven0TT0/Noxtan-Player/releases)
+
 A beautiful, cinematic, and modern media player for Android based on [mpv-android](https://github.com/mpv-android/mpv-android), offering a significantly enhanced user interface and advanced playback features.
 
 ## Features
